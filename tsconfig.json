@@ -1,12 +1,19 @@
 {
   "compilerOptions": {
+    "module": "none",
     "outDir": "./build/",
     "sourceMap": true,
     "removeComments": true,
-    "jsx": "react"
+    "jsx": "react",
+    "moduleResolution": "node",
+    "types": [
+      "react",
+      "react-dom"
+    ]
   },
   "include": [
-    "src/**/*"
+    "src/**/*.ts",
+    "src/**/*.tsx"
   ],
   "exclude": [
     "node_modules"
