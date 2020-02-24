@@ -1,3 +1,3 @@
 const myNumber: number = 5;
 
-console.log(myNumber);
+console.info(myNumber);

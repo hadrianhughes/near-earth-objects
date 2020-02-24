@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack",
     "start": "webpack-dev-server",
-    "lint": "eslint ./src --ext *.ts"
+    "lint": "eslint ./src/**/*.ts"
   },
   "author": "Hadrian Hughes",
   "license": "GPL-3.0",
@@ -43,7 +43,10 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": ""
+      "pre-commit": "npm run lint"
     }
+  },
+  "dependencies": {
+    "eslint-plugin-react": "^7.18.3"
   }
 }
