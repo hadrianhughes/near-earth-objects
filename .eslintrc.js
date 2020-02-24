@@ -8,6 +8,7 @@ module.exports = {
   },
   extends: [
     'eslint:recommended',
+    '@typescript-eslint',
     'plugin:react/recommended',
   ],
   env: {
