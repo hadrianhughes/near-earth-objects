@@ -4,7 +4,9 @@
   "description": "A tool for search for and visualisation the orbits of near-earth objects, such as asteroids.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack",
+    "start": "webpack-dev-server",
+    "lint": "eslint src/**/*.js"
   },
   "author": "Hadrian Hughes",
   "license": "GPL-3.0",
@@ -34,5 +36,10 @@
     "webpack": "^4.41.6",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": ""
+    }
   }
 }
