@@ -1,0 +1,11 @@
+{
+  "name": "near-earth-objects",
+  "version": "0.0.0",
+  "description": "A tool for search for and visualisation the orbits of near-earth objects, such as asteroids.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Hadrian Hughes",
+  "license": "GPL-3.0"
+}
