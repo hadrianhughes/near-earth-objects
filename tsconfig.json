@@ -2,7 +2,8 @@
   "compilerOptions": {
     "outDir": "./build/",
     "sourceMap": true,
-    "removeComments": true
+    "removeComments": true,
+    "jsx": "react"
   },
   "include": [
     "src/**/*"
