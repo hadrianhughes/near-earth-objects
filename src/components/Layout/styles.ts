@@ -9,13 +9,13 @@ export const Grid = styled.main`
   }
 `;
 
-export const Controls = styled.section`
+export const ControlsColumn = styled.section`
   ${minWidth('large')} {
     grid-column: 1 / span 2;
   }
 `;
 
-export const Display = styled.section`
+export const DisplayColumn = styled.section`
   ${minWidth('large')} {
     grid-column: 3 / span 6;
   }
