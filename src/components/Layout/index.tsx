@@ -7,7 +7,7 @@ import {
   DisplayColumn
 } from './styles';
 
-const Layout = (): HTMLElement => (
+const Layout = () => (
   <Grid>
     <ControlsColumn></ControlsColumn>
     <DisplayColumn></DisplayColumn>

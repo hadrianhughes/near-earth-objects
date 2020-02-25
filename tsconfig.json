@@ -8,8 +8,10 @@
     "moduleResolution": "node",
     "types": [
       "react",
-      "react-dom"
-    ]
+      "react-dom",
+      "jest"
+    ],
+    "esModuleInterop": true
   },
   "include": [
     "src/**/*.ts",
