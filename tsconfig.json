@@ -1,11 +1,9 @@
 {
   "compilerOptions": {
-    "module": "none",
     "outDir": "./build/",
     "sourceMap": true,
     "removeComments": true,
     "jsx": "react",
-    "moduleResolution": "node",
     "types": [
       "react",
       "react-dom",

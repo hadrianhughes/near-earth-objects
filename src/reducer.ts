@@ -1,8 +1,12 @@
-const initialState = {
+interface State {
+  query: string
+}
+
+const initialState: State = {
   query: ''
 };
 
-function reducer(state = initialState, action) {
+function reducer(state: State = initialState, action): State {
   switch (action.type) {
     case 'SET_QUERY':
       return { ...state, query: action.payload };

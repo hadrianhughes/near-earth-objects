@@ -1,13 +1,8 @@
-export const createBEM = (block): string => (element: string, modifiers: [string] = []): string => {
-  let classes = [block];
+// USED FOR TESTING
+export const dive = (component, levels: number = 1) => {
+  const child = component.children[0];
 
-  if (element) classes.push(`${block}__${element}`);
+  if (levels > 1) return dive(child, levels - 1);
 
-  if (modifiers.length > 0) {
-    modifiers.forEach(m => classes.push(
-      `${block}__${element}--${m}`
-    ));
-  }
-
-  return classes.join(' ');
+  return child;
 };
