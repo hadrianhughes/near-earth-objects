@@ -1,39 +1,20 @@
 import React, { Fragment } from 'react';
-import { create, act } from 'react-test-renderer';
+import { act } from 'react-test-renderer';
+import ShallowRenderer from 'react-test-renderer/shallow';
 import { dive } from '../../utils';
 import Controls from './index';
 
 describe('Controls component', () => {
-  it('Should render an input', () => {
-    const component = create(
+  it('Should render a Fragment', () => {
+    const r = new ShallowRenderer();
+    r.render(
       <Controls
         query=""
         onChangeQuery={() => {}}/>
-    ).root;
+    );
 
-    expect(() => component.findByType('input')).not.toThrow();
-  });
+    const component = r.getRenderOutput();
 
-  it('Should fire the `onChangeQuery` prop when the input is used', () => {
-    const onChangeQuery = jest.fn();
-
-    const component = create(
-      <Controls
-        query=""
-        onChangeQuery={onChangeQuery} />
-    ).root;
-
-    const expectedOutput = {
-      target: {
-        value: 'foo'
-      }
-    };
-
-    act(() => {
-      const inputEl = component.findByType('input');
-      inputEl.props.onChange(expectedOutput);
-    });
-
-    expect(onChangeQuery).toHaveBeenCalledWith(expectedOutput);
+    expect(component.type).toBe(Fragment);
   });
 });
