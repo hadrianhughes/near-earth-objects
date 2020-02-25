@@ -3,3 +3,7 @@ export const breakpoints = {
 };
 
 export const baseFontSize = 16;
+
+export const colors = {
+  lightGrey: '#d8d8d8'
+};

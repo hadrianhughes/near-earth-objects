@@ -1,15 +1,22 @@
 import React, { Fragment, ChangeEvent } from 'react';
+import {
+  Wrapper,
+  Input
+} from './styles';
 
 interface PropTypes {
   query: string;
   onChangeQuery: (ChangeEvent) => any;
 }
 
-const Controls = ({ onChangeQuery }: PropTypes) => (
+const Controls = ({ query, onChangeQuery }: PropTypes) => (
   <Fragment>
-    <div>
-      <input type="text" onChange={onChangeQuery} />
-    </div>
+    <Wrapper>
+      <Input
+        type="text"
+        value={query}
+        onChange={onChangeQuery} />
+    </Wrapper>
   </Fragment>
 );
 
