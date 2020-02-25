@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { Fragment, ChangeEvent } from 'react';
 
 interface PropTypes {
   query: string;
-  onChangeQuery: Function;
+  onChangeQuery: (ChangeEvent) => any;
 }
 
-const Controls = (props: PropTypes) => <div />;
+const Controls = ({ onChangeQuery }: PropTypes) => (
+  <Fragment>
+    <div>
+      <input type="text" onChange={onChangeQuery} />
+    </div>
+  </Fragment>
+);
 
 export default Controls;

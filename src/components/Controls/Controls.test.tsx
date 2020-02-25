@@ -1,43 +1,39 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { create, act } from 'react-test-renderer';
 import { dive } from '../../utils';
-import { ControlsContainer } from './ControlsContainer';
+import Controls from './index';
 
-describe('ControlsContainer component', () => {
-  jest.doMock('./index', () => () => (
-    <div />
-  ));
-
-  it('Should accept a `query` prop and pass it to Controls with the same name', () => {
-    const query = 'test query';
+describe('Controls component', () => {
+  it('Should render an input', () => {
     const component = create(
-      <ControlsContainer
-        query={query}
-        setQuery={() => {}} />
+      <Controls
+        query=""
+        onChangeQuery={() => {}}/>
     ).root;
 
-    expect(dive(component).props.query).toBe(query);
+    expect(() => component.findByType('input')).not.toThrow();
   });
 
-  it('Should accept an `setQuery` prop and pass a function called `onChangeQuery` to Controls which defers to it', () => {
-    const setQuery = jest.fn();
+  it('Should fire the `onChangeQuery` prop when the input is used', () => {
+    const onChangeQuery = jest.fn();
+
     const component = create(
-      <ControlsContainer
-        query={''}
-        setQuery={setQuery} />
+      <Controls
+        query=""
+        onChangeQuery={onChangeQuery} />
     ).root;
 
-    const controls = dive(component);
-    const expectedOutput = 'test output';
+    const expectedOutput = {
+      target: {
+        value: 'foo'
+      }
+    };
 
     act(() => {
-      controls.props.onChangeQuery({
-        target: {
-          value: expectedOutput
-        }
-      });
+      const inputEl = component.findByType('input');
+      inputEl.props.onChange(expectedOutput);
     });
 
-    expect(setQuery).toHaveBeenCalledWith(expectedOutput);
+    expect(onChangeQuery).toHaveBeenCalledWith(expectedOutput);
   });
 });
