@@ -1,7 +1,7 @@
 import React from 'react';
 import { create, act } from 'react-test-renderer';
 import { dive } from '../../utils';
-import ControlsContainer from './ControlsContainer';
+import { ControlsContainer } from './ControlsContainer';
 
 describe('ControlsContainer component', () => {
   jest.doMock('./index', () => () => (
@@ -13,26 +13,31 @@ describe('ControlsContainer component', () => {
     const component = create(
       <ControlsContainer
         query={query}
-        onChangeQuery={() => {}} />
+        setQuery={() => {}} />
     ).root;
 
     expect(dive(component).props.query).toBe(query);
   });
 
-  it('Should accept an `onChangeQuery` prop and pass it to Controls with the same name', () => {
-    const onChangeQuery = jest.fn();
+  it('Should accept an `setQuery` prop and pass a function called `onChangeQuery` to Controls which defers to it', () => {
+    const setQuery = jest.fn();
     const component = create(
       <ControlsContainer
         query={''}
-        onChangeQuery={onChangeQuery} />
+        setQuery={setQuery} />
     ).root;
 
     const controls = dive(component);
+    const expectedOutput = 'test output';
 
     act(() => {
-      controls.props.onChangeQuery();
+      controls.props.onChangeQuery({
+        target: {
+          value: expectedOutput
+        }
+      });
     });
 
-    expect(onChangeQuery).toHaveBeenCalled();
+    expect(setQuery).toHaveBeenCalledWith(expectedOutput);
   });
 });
