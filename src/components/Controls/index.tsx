@@ -1,4 +1,4 @@
-import React, { Fragment, ChangeEvent } from 'react';
+import React, { Fragment, ChangeEvent, MouseEvent } from 'react';
 import {
   Wrapper,
   Input
@@ -9,9 +9,10 @@ import Button from '../Button';
 interface PropTypes {
   query: string;
   onChangeQuery: (ChangeEvent) => any;
+  onSearch: (MouseEvent) => any;
 }
 
-const Controls = ({ query, onChangeQuery }: PropTypes) => (
+const Controls = ({ query, onChangeQuery, onSearch }: PropTypes) => (
   <Fragment>
     <Wrapper flex>
       <Input
@@ -19,7 +20,7 @@ const Controls = ({ query, onChangeQuery }: PropTypes) => (
         value={query}
         placeholder={txtIDPlaceholder}
         onChange={onChangeQuery} />
-      <Button text={txtSearch} onClick={() => console.log('clicked')} />
+      <Button text={txtSearch} onClick={onSearch} />
     </Wrapper>
   </Fragment>
 );

@@ -1,11 +1,13 @@
 import { Action } from './actions';
 
 export interface State {
-  query: string
+  query: string;
+  results: object;
 }
 
 const initialState: State = {
-  query: ''
+  query: '',
+  results: {}
 };
 
 function reducer(state: State = initialState, action: Action): State {
@@ -13,6 +15,8 @@ function reducer(state: State = initialState, action: Action): State {
     case 'SET_QUERY':
       const newQuery = action.payload.replace(/[^0-9]/g, '');
       return { ...state, query: newQuery };
+    case 'SET_RESULTS':
+      return { ...state, results: action.payload };
     default:
       return state;
   }
