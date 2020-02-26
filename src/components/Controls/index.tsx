@@ -3,7 +3,7 @@ import {
   Wrapper,
   Input
 } from './styles';
-import { txtSearch } from '../../strings';
+import { txtSearch, txtIDPlaceholder } from '../../strings';
 import Button from '../Button';
 
 interface PropTypes {
@@ -17,6 +17,7 @@ const Controls = ({ query, onChangeQuery }: PropTypes) => (
       <Input
         type="text"
         value={query}
+        placeholder={txtIDPlaceholder}
         onChange={onChangeQuery} />
       <Button text={txtSearch} onClick={() => console.log('clicked')} />
     </Wrapper>
