@@ -3,7 +3,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
 import reducer from './reducer';
-import testSaga from './sagas/test';
+import testSaga from './sagas/temp';
 import Layout from './components/Layout';
 import GlobalStyles from './styles/global';
 
