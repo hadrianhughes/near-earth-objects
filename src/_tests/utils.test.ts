@@ -1,4 +1,4 @@
-import { dive } from './utils';
+import { dive } from '../utils';
 
 describe('dive function', () => {
   it('Should accept an object with a populated `children` array and return the first element', () => {
