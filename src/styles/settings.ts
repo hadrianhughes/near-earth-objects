@@ -5,5 +5,8 @@ export const breakpoints = {
 export const baseFontSize = 16;
 
 export const colors = {
-  lightGrey: '#d8d8d8'
+  white: '#fff',
+  black: '#000',
+  lightGrey: '#d8d8d8',
+  lighterGrey: '#efefef'
 };

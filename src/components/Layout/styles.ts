@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { minWidth } from '../../styles/tools';
 
 export const Grid = styled.main`
@@ -10,7 +10,12 @@ export const Grid = styled.main`
 `;
 
 export const ControlsColumn = styled.section`
+  display: none;
+
+  ${props => props.show ? css`display: block;` : ''}
+
   ${minWidth('large')} {
+    display: block;
     grid-column: 1 / span 2;
   }
 `;
