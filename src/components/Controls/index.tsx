@@ -11,7 +11,7 @@ interface PropTypes {
 
 const Controls = ({ query, onChangeQuery }: PropTypes) => (
   <Fragment>
-    <Wrapper>
+    <Wrapper flex>
       <Input
         type="text"
         value={query}

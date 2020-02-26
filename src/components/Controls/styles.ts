@@ -1,9 +1,14 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { rem } from '../../styles/tools';
 import { colors } from '../../styles/settings';
 
 export const Wrapper = styled.div`
   padding: ${rem(10)};
+
+  ${props => props.flex ? css`
+    display: flex;
+    justify-content: space-between;
+  ` : ''}
 `;
 
 export const Input = styled.input`
@@ -12,5 +17,5 @@ export const Input = styled.input`
   box-sizing: border-box;
   font-size: ${rem(16)};
   padding: ${rem(10)};
-  width: 100%;
+  width: 60%;
 `;
