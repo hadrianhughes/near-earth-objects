@@ -2,12 +2,12 @@ import { Action } from './actions';
 
 export interface State {
   query: string;
-  results: object;
+  results: Array<object>;
 }
 
 const initialState: State = {
   query: '',
-  results: {}
+  results: []
 };
 
 function reducer(state: State = initialState, action: Action): State {

@@ -3,8 +3,8 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
 import reducer from './reducer';
-import testSaga from './sagas/temp';
-import searchSaga from './sagas/search';
+import sagas from './sagas';
+
 import Layout from './components/Layout';
 import GlobalStyles from './styles/global';
 
@@ -15,8 +15,7 @@ const store = createStore(
   applyMiddleware(sagaMiddleware)
 );
 
-sagaMiddleware.run(testSaga);
-sagaMiddleware.run(searchSaga);
+sagas.forEach(sagaMiddleware.run);
 
 const App = () => (
   <Provider store={store}>

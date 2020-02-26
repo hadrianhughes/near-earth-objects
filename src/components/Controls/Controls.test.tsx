@@ -7,7 +7,8 @@ describe('Controls component', () => {
     const component = shallow(
       <Controls
         query=""
-        onChangeQuery={() => {}}/>
+        onChangeQuery={() => {}}
+        onSearch={() => {}} />
     );
 
     expect(component.type()).toBe(Fragment);

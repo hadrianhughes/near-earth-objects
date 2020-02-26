@@ -7,7 +7,7 @@ function* performSearch () {
   const query = yield select(getQuery);
   const result = yield apiSearchByID(query);
 
-  yield put({ type: 'SET_RESULTS', payload: result });
+  yield put({ type: 'SET_RESULTS', payload: [result] });
 }
 
 export default function* searchSaga () {

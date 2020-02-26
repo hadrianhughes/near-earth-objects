@@ -13,7 +13,9 @@ describe('ControlsContainer component', () => {
     const component = create(
       <ControlsContainer
         query={query}
-        setQuery={() => {}} />
+        setQuery={() => {}}
+        performSearch={() => {}}
+        results={[]} />
     ).root;
 
     expect(dive(component).props.query).toBe(query);
@@ -24,7 +26,9 @@ describe('ControlsContainer component', () => {
     const component = create(
       <ControlsContainer
         query={''}
-        setQuery={setQuery} />
+        setQuery={setQuery}
+        performSearch={() => {}}
+        results={[]} />
     ).root;
 
     const controls = dive(component);
@@ -39,5 +43,24 @@ describe('ControlsContainer component', () => {
     });
 
     expect(setQuery).toHaveBeenCalledWith(expectedOutput);
+  });
+
+  it('Should accept a performSearch prop and call it when the search button is pressed', () => {
+    const performSearch = jest.fn();
+    const component = create(
+      <ControlsContainer
+        query={''}
+        setQuery={() => {}}
+        performSearch={performSearch}
+        results={[]} />
+    ).root;
+
+    const searchButton = component.findAllByType('button')[0];
+
+    act(() => {
+      searchButton.props.onClick();
+    });
+
+    expect(performSearch).toHaveBeenCalled();
   });
 });

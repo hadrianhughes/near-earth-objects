@@ -11,7 +11,12 @@ interface PropTypes {
   results: object;
 }
 
-export const ControlsContainer = ({ query, setQuery, performSearch, results }: PropTypes) => {
+export const ControlsContainer = ({
+  query,
+  setQuery,
+  performSearch,
+  results
+}: PropTypes) => {
   // TODO: REMOVE
   console.log(results);
 
