@@ -18,7 +18,7 @@ const Controls = ({
   query,
   onChangeQuery,
   onSearch,
-  results
+  results = []
 }: PropTypes) => (
   <Fragment>
     <Wrapper flex>
@@ -29,7 +29,14 @@ const Controls = ({
         onChange={onChangeQuery} />
       <Button text={txtSearch} onClick={onSearch} />
     </Wrapper>
-    <ResultsList items={results} />
+    {
+      results.length > 0 ?
+        <Wrapper>
+          <ResultsList items={results} />
+        </Wrapper>
+        :
+        null
+    }
   </Fragment>
 );
 
