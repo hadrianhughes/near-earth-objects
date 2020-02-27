@@ -8,7 +8,8 @@ describe('Controls component', () => {
       <Controls
         query=""
         onChangeQuery={() => {}}
-        onSearch={() => {}} />
+        onSearch={() => {}}
+        results={[]} />
     );
 
     expect(component.type()).toBe(Fragment);

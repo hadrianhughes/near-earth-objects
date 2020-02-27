@@ -8,7 +8,7 @@ interface PropTypes {
   query: string;
   setQuery: Function;
   performSearch: Function;
-  results: object;
+  results: Array<object>;
 }
 
 export const ControlsContainer = ({
@@ -17,9 +17,6 @@ export const ControlsContainer = ({
   performSearch,
   results
 }: PropTypes) => {
-  // TODO: REMOVE
-  console.log(results);
-
   const onChangeQuery = (e: ChangeEvent<HTMLInputElement>) =>
     setQuery(e.target.value);
 
@@ -27,7 +24,8 @@ export const ControlsContainer = ({
     <Controls
       query={query}
       onChangeQuery={onChangeQuery}
-      onSearch={() => performSearch()} />
+      onSearch={() => performSearch()}
+      results={results} />
   );
 };
 

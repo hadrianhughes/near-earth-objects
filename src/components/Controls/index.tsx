@@ -10,9 +10,15 @@ interface PropTypes {
   query: string;
   onChangeQuery: (ChangeEvent) => any;
   onSearch: (MouseEvent) => any;
+  results: Array<object>;
 }
 
-const Controls = ({ query, onChangeQuery, onSearch }: PropTypes) => (
+const Controls = ({
+  query,
+  onChangeQuery,
+  onSearch,
+  results
+}: PropTypes) => (
   <Fragment>
     <Wrapper flex>
       <Input
@@ -22,6 +28,7 @@ const Controls = ({ query, onChangeQuery, onSearch }: PropTypes) => (
         onChange={onChangeQuery} />
       <Button text={txtSearch} onClick={onSearch} />
     </Wrapper>
+    {console.log(results)}
   </Fragment>
 );
 
