@@ -1,8 +1,9 @@
 import { Action } from './actions';
+import { Result } from './components/ResultsList';
 
 export interface State {
   query: string;
-  results: Array<object>;
+  results: Array<Result>;
 }
 
 const initialState: State = {

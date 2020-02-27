@@ -3,12 +3,13 @@ import { connect } from 'react-redux';
 import Controls from './index';
 import { setQuery, performSearch } from '../../actions';
 import { State } from '../../reducer';
+import { Result } from '../ResultsList';
 
 interface PropTypes {
   query: string;
   setQuery: Function;
   performSearch: Function;
-  results: Array<object>;
+  results: Array<Result>;
 }
 
 export const ControlsContainer = ({

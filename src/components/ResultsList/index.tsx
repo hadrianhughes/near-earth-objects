@@ -1,11 +1,19 @@
 import React from 'react';
 
-interface PropTypes {
-  items: Array<object>;
+export interface Result {
+  id: string;
+  name: string;
 }
 
-const ResultsList = ({ items }: PropTypes) => (
+interface PropTypes {
+  items: Array<Result>;
+}
+
+const ResultsList = ({ items = [] }: PropTypes) => (
   <ul>
+    {
+      items.map(item => <li key={item.id}>{item.name}</li>)
+    }
   </ul>
 );
 

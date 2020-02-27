@@ -5,12 +5,13 @@ import {
 } from './styles';
 import { txtSearch, txtIDPlaceholder } from '../../strings';
 import Button from '../Button';
+import ResultsList, { Result } from '../ResultsList';
 
 interface PropTypes {
   query: string;
   onChangeQuery: (ChangeEvent) => any;
   onSearch: (MouseEvent) => any;
-  results: Array<object>;
+  results: Array<Result>;
 }
 
 const Controls = ({
@@ -28,7 +29,7 @@ const Controls = ({
         onChange={onChangeQuery} />
       <Button text={txtSearch} onClick={onSearch} />
     </Wrapper>
-    {console.log(results)}
+    <ResultsList items={results} />
   </Fragment>
 );
 
