@@ -3,6 +3,7 @@ import { baseFontSize } from './settings';
 
 const Globals = createGlobalStyle`
   html, body {
+    font-family: sans-serif;
     font-size: ${baseFontSize}px;
     margin: 0;
   }
