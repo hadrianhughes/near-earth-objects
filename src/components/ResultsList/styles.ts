@@ -18,6 +18,7 @@ export const ItemButton = styled.button`
 `;
 
 export const ItemHeading = styled.h3`
+  margin-bottom: ${rem(10)};
   margin-top: 0;
 `;
 

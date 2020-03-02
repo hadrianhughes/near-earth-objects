@@ -36,7 +36,7 @@ const Controls = ({
         placeholder={txtIDPlaceholder}
         onChange={onChangeQuery} />
       <Button text={txtSearch} onClick={onSearch} />
-      <Radio items={sizeUnitOptions} setActive={setSizeUnit} />
+      <Radio label="Size in:" items={sizeUnitOptions} setActive={setSizeUnit} />
     </Wrapper>
     {
       results.length > 0 ?

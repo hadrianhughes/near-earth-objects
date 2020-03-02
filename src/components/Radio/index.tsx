@@ -1,23 +1,37 @@
 import React from 'react';
+import { Inner, Button, Label, Outer } from './styles';
 
 export interface RadioItem {
   id: string;
   text: string;
+  active: boolean;
 }
 
 interface PropTypes {
+  label: string;
   items: Array<RadioItem>;
   setActive: (string) => any;
 }
 
-const Radio = ({ items = [], setActive }: PropTypes) => (
-  <div>
+const Radio = ({ label, items = [], setActive }: PropTypes) => (
+  <Outer>
     {
-      items.map(item =>
-        <button key={item.id} onClick={setActive(item.id)}>{item.text}</button>
-      )
+      label ?
+        <Label>{label}</Label>
+        :
+        null
     }
-  </div>
+    <Inner>
+      {
+        items.map(item =>
+          <Button
+            key={item.id}
+            active={item.active}
+            onClick={setActive(item.id)}>{item.text}</Button>
+        )
+      }
+    </Inner>
+  </Outer>
 );
 
 export default Radio;
