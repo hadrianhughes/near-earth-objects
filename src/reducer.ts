@@ -12,12 +12,14 @@ export interface State {
   query: string;
   results: Array<Result>;
   sizeUnit: SizeUnit;
+  isControlsOpen: boolean;
 }
 
 export const initialState: State = {
   query: '',
   results: [],
-  sizeUnit: SizeUnit.kilometers
+  sizeUnit: SizeUnit.kilometers,
+  isControlsOpen: false
 };
 
 function reducer(state: State = initialState, action: Action): State {
@@ -29,6 +31,8 @@ function reducer(state: State = initialState, action: Action): State {
       return { ...state, results: action.payload };
     case 'SET_SIZE_UNIT':
       return { ...state, sizeUnit: action.payload };
+    case 'SET_CONTROLS_OPEN':
+      return { ...state, isControlsOpen: action.payload };
     default:
       return state;
   }

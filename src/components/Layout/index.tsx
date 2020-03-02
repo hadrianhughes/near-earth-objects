@@ -8,7 +8,12 @@ import {
 import ControlsContainer from '../Controls/ControlsContainer';
 import Display from '../Display';
 
-const Layout = () => (
+interface PropTypes {
+  isControlsOpen: boolean;
+  onSetControls: () => void;
+}
+
+const Layout = ({ isControlsOpen, onSetControls }: PropTypes) => (
   <Grid>
     <ControlsColumn>
       <ControlsContainer />

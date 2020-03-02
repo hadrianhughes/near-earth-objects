@@ -18,3 +18,8 @@ export const setSizeUnit = (unit: SizeUnit): Action => ({
   type: 'SET_SIZE_UNIT',
   payload: unit
 });
+
+export const setControlsOpen = (isOpen: boolean): Action => ({
+  type: 'SET_CONTROLS_OPEN',
+  payload: isOpen
+});
