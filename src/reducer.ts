@@ -1,14 +1,23 @@
 import { Action } from './actions';
 import { Result } from './components/ResultsList';
 
+export enum SizeUnit {
+  feet = 'feet',
+  miles = 'miles',
+  kilometers = 'kilometers',
+  meters = 'meters'
+}
+
 export interface State {
   query: string;
   results: Array<Result>;
+  sizeUnit: SizeUnit;
 }
 
-const initialState: State = {
+export const initialState: State = {
   query: '',
-  results: []
+  results: [],
+  sizeUnit: SizeUnit.kilometers
 };
 
 function reducer(state: State = initialState, action: Action): State {

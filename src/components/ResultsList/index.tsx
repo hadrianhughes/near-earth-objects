@@ -1,6 +1,7 @@
 import React from 'react';
-import { get } from '../../utils';
-import { ItemButton } from './styles';
+import { get, size } from '../../utils';
+import { SizeUnit } from '../../reducer';
+import { ItemButton, ItemHeading, DetailLabel } from './styles';
 
 export interface Result {
   id: string;
@@ -10,18 +11,29 @@ export interface Result {
 
 interface PropTypes {
   items: Array<Result>;
+  sizeUnit: SizeUnit;
 }
 
-const ResultsList = ({ items = [] }: PropTypes) => (
+const ResultsList = ({ items = [], sizeUnit }: PropTypes) => (
   <ul>
     {
       items.map(item =>
         <li key={item.id}>
           <ItemButton>
-            <h3>{item.name}</h3>
-            <div>
-              <span>Diameter: {item.diameter}</span>
-            </div>
+            <ItemHeading>{item.name}</ItemHeading>
+            {
+              item.diameter ?
+                <table>
+                  <tbody>
+                    <tr>
+                      <DetailLabel>Diameter: </DetailLabel>
+                      <td>{size(sizeUnit)(item.diameter)}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                :
+                null
+            }
           </ItemButton>
         </li>
       )

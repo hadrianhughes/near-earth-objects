@@ -1,4 +1,5 @@
-import { dive, get } from '../utils';
+import { dive, get, size } from '../utils';
+import { SizeUnit } from '../reducer';
 
 describe('dive function', () => {
   it('Should accept an object with a populated `children` array and return the first element', () => {
@@ -59,5 +60,21 @@ describe('get function', () => {
 
     expect(get(path)(object)).toBe(undefined);
     expect(get(path)(object, 'default')).toBe('default');
+  });
+});
+
+
+describe('size function', () => {
+  it('Should accept a SizeUnit and return a function', () => {
+    expect(typeof size(SizeUnit.feet)).toBe('function');
+  });
+
+  it('Should accept a SizeUnit and a number and return a string formatted with appropriate unit', () => {
+    const testVal = 10;
+
+    expect(size(SizeUnit.feet)(testVal)).toBe(`${testVal}ft`);
+    expect(size(SizeUnit.miles)(testVal)).toBe(`${testVal}mi`);
+    expect(size(SizeUnit.kilometers)(testVal)).toBe(`${testVal}km`);
+    expect(size(SizeUnit.meters)(testVal)).toBe(`${testVal}m`);
   });
 });

@@ -1,10 +1,6 @@
-import reducer from '../reducer';
+import reducer, { initialState } from '../reducer';
 
 describe('reducer function', () => {
-  const baseState = {
-    query: '',
-    results: []
-  };
 
   it('Should accept a previous state and a SET_QUERY action with a valid ID and return the state with updated query', () => {
     const action = {
@@ -13,11 +9,11 @@ describe('reducer function', () => {
     };
 
     const expectedOutput = {
-      ...baseState,
+      ...initialState,
       query: '1234'
     };
 
-    expect(reducer(baseState, action)).toStrictEqual(expectedOutput);
+    expect(reducer(initialState, action)).toStrictEqual(expectedOutput);
   });
 
   it('Should accept a previous state and a SET_QUERY action with an ID containing numbers and other characters and only use the numbers', () => {
@@ -27,11 +23,11 @@ describe('reducer function', () => {
     };
 
     const expectedOutput = {
-      ...baseState,
+      ...initialState,
       query: '123'
     };
 
-    expect(reducer(baseState, action)).toStrictEqual(expectedOutput);
+    expect(reducer(initialState, action)).toStrictEqual(expectedOutput);
   });
 
   it('Should accept a previoius state and a SET_RESULTS action with an array and return the state with replaced results', () => {
@@ -41,10 +37,10 @@ describe('reducer function', () => {
     };
 
     const expectedOutput = {
-      ...baseState,
+      ...initialState,
       results: [{ foo: 'bar' }]
     };
 
-    expect(reducer(baseState, action)).toStrictEqual(expectedOutput);
+    expect(reducer(initialState, action)).toStrictEqual(expectedOutput);
   });
 });
