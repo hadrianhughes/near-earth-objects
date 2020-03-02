@@ -21,6 +21,16 @@ export const ItemHeading = styled.h3`
   margin-top: 0;
 `;
 
+export const Details = styled.table`
+  width: 100%;
+
+  tr {
+    display: flex;
+    justify-content: space-between;
+  }
+`;
+
 export const DetailLabel = styled.td`
   font-weight: bold;
+  margin-right: ${rem(20)};
 `;

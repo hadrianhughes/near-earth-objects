@@ -1,7 +1,12 @@
 import React from 'react';
 import { get, size } from '../../utils';
 import { SizeUnit } from '../../reducer';
-import { ItemButton, ItemHeading, DetailLabel } from './styles';
+import {
+  ItemButton,
+  ItemHeading,
+  Details,
+  DetailLabel
+} from './styles';
 
 export interface Result {
   id: string;
@@ -23,14 +28,14 @@ const ResultsList = ({ items = [], sizeUnit }: PropTypes) => (
             <ItemHeading>{item.name}</ItemHeading>
             {
               item.diameter ?
-                <table>
+                <Details>
                   <tbody>
                     <tr>
                       <DetailLabel>Diameter: </DetailLabel>
                       <td>{size(sizeUnit)(item.diameter)}</td>
                     </tr>
                   </tbody>
-                </table>
+                </Details>
                 :
                 null
             }

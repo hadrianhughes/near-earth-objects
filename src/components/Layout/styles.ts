@@ -3,7 +3,7 @@ import { colors } from '../../styles/settings';
 import { minWidth } from '../../styles/tools';
 
 export const Grid = styled.main`
-  ${minWidth('large')} {
+  ${minWidth('xlarge')} {
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     min-height: 100vh;
@@ -15,7 +15,7 @@ export const ControlsColumn = styled.section`
 
   ${props => props.show ? css`display: block;` : ''}
 
-  ${minWidth('large')} {
+  ${minWidth('xlarge')} {
     border-right: 5px solid ${colors.lightGrey};
     display: block;
     grid-column: 1 / span 2;
@@ -25,7 +25,7 @@ export const ControlsColumn = styled.section`
 export const DisplayColumn = styled.section`
   background-color: #474550;
 
-  ${minWidth('large')} {
+  ${minWidth('xlarge')} {
     grid-column: 3 / span 6;
   }
 `;

@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import { SizeUnit } from '../../reducer';
 import { size } from '../../utils';
 import ResultsList from './index';
-import { ItemHeading } from './styles';
+import { ItemHeading, Details } from './styles';
 
 describe('ResultsList component', () => {
   const items = [
@@ -57,7 +57,7 @@ describe('ResultsList component', () => {
     );
 
     component.children().forEach((item, index) => {
-      const table = item.find('table');
+      const table = item.find(Details);
 
       expect(table.length).toBe(1);
       expect(
