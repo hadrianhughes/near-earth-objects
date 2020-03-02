@@ -2,15 +2,15 @@ import React from 'react';
 import { act } from 'react-test-renderer';
 import { shallow } from 'enzyme';
 import Radio from './index';
-import { Outer, Label, Inner, Button } from './styles';
+import { Label, Inner, Button } from './styles';
 
 describe('Radio component', () => {
-  it('Should always render an `Outer`', () => {
+  it('Should always render a `div`', () => {
     const component = shallow(
       <Radio label="" items={[]} setActive={() => {}} />
     );
 
-    expect(component.find(Outer).length).toBe(1);
+    expect(component.find('div').length).toBe(1);
   });
 
   it('Should render a `label` when given the label prop', () => {

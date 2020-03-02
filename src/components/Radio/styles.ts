@@ -2,10 +2,6 @@ import styled, { css } from 'styled-components';
 import { colors } from '../../styles/settings';
 import { rem } from '../../styles/tools';
 
-export const Outer = styled.div`
-  margin: ${rem(10)} 0;
-`;
-
 export const Label = styled.span`
   color: ${colors.darkGrey};
   display: inline-block;

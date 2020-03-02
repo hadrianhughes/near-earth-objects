@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
-import { baseFontSize } from './settings';
+import { baseFontSize, colors } from './settings';
+import { rem } from './tools';
 
 const Globals = createGlobalStyle`
   html, body {
@@ -12,6 +13,13 @@ const Globals = createGlobalStyle`
     list-style-type: none;
     margin: 0;
     padding: 0;
+  }
+
+  hr {
+    border: none;
+    border-bottom: 1px solid ${colors.lightGrey};
+    margin: ${rem(20)};
+    width: 100%;
   }
 `;
 

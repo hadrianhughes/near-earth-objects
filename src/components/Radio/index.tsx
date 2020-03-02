@@ -1,5 +1,5 @@
 import React from 'react';
-import { Inner, Button, Label, Outer } from './styles';
+import { Inner, Button, Label } from './styles';
 
 export interface RadioItem {
   id: string;
@@ -14,7 +14,7 @@ interface PropTypes {
 }
 
 const Radio = ({ label, items = [], setActive }: PropTypes) => (
-  <Outer>
+  <div>
     {
       label ?
         <Label>{label}</Label>
@@ -31,7 +31,7 @@ const Radio = ({ label, items = [], setActive }: PropTypes) => (
         )
       }
     </Inner>
-  </Outer>
+  </div>
 );
 
 export default Radio;
