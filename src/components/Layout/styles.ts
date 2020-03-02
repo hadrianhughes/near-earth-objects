@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { colors } from '../../styles/settings';
-import { minWidth } from '../../styles/tools';
+import { minWidth, rem } from '../../styles/tools';
 
 export const Grid = styled.main`
   ${minWidth('xlarge')} {
@@ -11,13 +11,21 @@ export const Grid = styled.main`
 `;
 
 export const ControlsColumn = styled.section`
+  background-color: ${colors.white};
+  box-sizing: border-box;
   display: none;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: flex-end;
+  padding-bottom: ${rem(50)};
 
-  ${props => props.show ? css`display: block;` : ''}
+  ${props => props.show ? css`display: flex;` : ''}
 
   ${minWidth('xlarge')} {
     border-right: 5px solid ${colors.lightGrey};
     display: block;
+    height: auto;
+    padding: 0;
     grid-column: 1 / span 2;
   }
 `;
