@@ -27,6 +27,8 @@ function reducer(state: State = initialState, action: Action): State {
       return { ...state, query: newQuery };
     case 'SET_RESULTS':
       return { ...state, results: action.payload };
+    case 'SET_SIZE_UNIT':
+      return { ...state, sizeUnit: action.payload };
     default:
       return state;
   }

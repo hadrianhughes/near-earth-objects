@@ -6,6 +6,7 @@ import {
 import { txtSearch, txtIDPlaceholder } from '../../strings';
 import { SizeUnit } from '../../reducer';
 import Button from '../Button';
+import Radio, { RadioItem } from '../Radio';
 import ResultsList, { Result } from '../ResultsList';
 
 interface PropTypes {
@@ -14,6 +15,8 @@ interface PropTypes {
   onSearch: (MouseEvent) => any;
   results: Array<Result>;
   sizeUnit: SizeUnit;
+  sizeUnitOptions: Array<RadioItem>;
+  setSizeUnit: (string) => any;
 }
 
 const Controls = ({
@@ -21,7 +24,9 @@ const Controls = ({
   onChangeQuery,
   onSearch,
   results = [],
-  sizeUnit
+  sizeUnit,
+  sizeUnitOptions,
+  setSizeUnit
 }: PropTypes) => (
   <Fragment>
     <Wrapper flex>
@@ -31,6 +36,7 @@ const Controls = ({
         placeholder={txtIDPlaceholder}
         onChange={onChangeQuery} />
       <Button text={txtSearch} onClick={onSearch} />
+      <Radio items={sizeUnitOptions} setActive={setSizeUnit} />
     </Wrapper>
     {
       results.length > 0 ?

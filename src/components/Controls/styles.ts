@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
 
   ${props => props.flex ? css`
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
   ` : ''}
 `;

@@ -1,7 +1,6 @@
-import reducer, { initialState } from '../reducer';
+import reducer, { initialState, SizeUnit } from '../reducer';
 
 describe('reducer function', () => {
-
   it('Should accept a previous state and a SET_QUERY action with a valid ID and return the state with updated query', () => {
     const action = {
       type: 'SET_QUERY',
@@ -39,6 +38,22 @@ describe('reducer function', () => {
     const expectedOutput = {
       ...initialState,
       results: [{ foo: 'bar' }]
+    };
+
+    expect(reducer(initialState, action)).toStrictEqual(expectedOutput);
+  });
+
+  it('Should accept a previous state and a SET_SIZE_UNIT action with a SizeUnit and return the state with updated unit', () => {
+    const unit = SizeUnit.feet;
+
+    const action = {
+      type: 'SET_SIZE_UNIT',
+      payload: unit
+    };
+
+    const expectedOutput = {
+      ...initialState,
+      sizeUnit: unit
     };
 
     expect(reducer(initialState, action)).toStrictEqual(expectedOutput);

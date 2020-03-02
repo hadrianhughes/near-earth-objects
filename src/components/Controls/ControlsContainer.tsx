@@ -1,7 +1,7 @@
 import React, { ChangeEvent } from 'react';
 import { connect } from 'react-redux';
 import Controls from './index';
-import { setQuery, performSearch } from '../../actions';
+import { setQuery, performSearch, setSizeUnit } from '../../actions';
 import { State, SizeUnit } from '../../reducer';
 import { Result } from '../ResultsList';
 import { get } from '../../utils';
@@ -9,9 +9,10 @@ import { get } from '../../utils';
 interface PropTypes {
   query: string;
   setQuery: Function;
-  performSearch: Function;
+  performSearch: () => any;
   results: Array<Result>;
-  sizeUnit: SizeUnit
+  sizeUnit: SizeUnit;
+  setSizeUnit: (SizeUnit) => any;
 }
 
 export const ControlsContainer = ({
@@ -19,7 +20,8 @@ export const ControlsContainer = ({
   setQuery,
   performSearch,
   results,
-  sizeUnit
+  sizeUnit,
+  setSizeUnit
 }: PropTypes) => {
   const onChangeQuery = (e: ChangeEvent<HTMLInputElement>) =>
     setQuery(e.target.value);
@@ -39,13 +41,40 @@ export const ControlsContainer = ({
     })()
   }));
 
+  const sizeUnitOptions = [
+    {
+      id: 'feet',
+      text: 'ft',
+      active: sizeUnit === SizeUnit.feet
+    },
+    {
+      id: 'meters',
+      text: 'm',
+      active: sizeUnit === SizeUnit.meters
+    },
+    {
+      id: 'miles',
+      text: 'mi',
+      active: sizeUnit === SizeUnit.miles
+    },
+    {
+      id: 'kilometers',
+      text: 'km',
+      active: sizeUnit === SizeUnit.kilometers
+    }
+  ];
+
+  const handleSizeUnit = (id: string) => () => setSizeUnit(SizeUnit[id]);
+
   return (
     <Controls
       query={query}
       onChangeQuery={onChangeQuery}
       onSearch={() => performSearch()}
       results={formattedResults}
-      sizeUnit={sizeUnit} />
+      sizeUnit={sizeUnit}
+      sizeUnitOptions={sizeUnitOptions}
+      setSizeUnit={handleSizeUnit} />
   );
 };
 
@@ -55,6 +84,6 @@ const mapStateToProps = (state: State) => ({
   sizeUnit: state.sizeUnit
 });
 
-const mapDispatchToProps = { setQuery, performSearch };
+const mapDispatchToProps = { setQuery, performSearch, setSizeUnit };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ControlsContainer);
