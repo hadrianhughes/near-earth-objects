@@ -6,13 +6,16 @@ import {
   DisplayColumn
 } from './styles';
 import ControlsContainer from '../Controls/ControlsContainer';
+import Display from '../Display';
 
 const Layout = () => (
   <Grid>
     <ControlsColumn>
       <ControlsContainer />
     </ControlsColumn>
-    <DisplayColumn></DisplayColumn>
+    <DisplayColumn>
+      <Display />
+    </DisplayColumn>
   </Grid>
 );
 

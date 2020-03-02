@@ -8,6 +8,7 @@ export const baseFontSize = 16;
 export const colors = {
   white: '#fff',
   black: '#000',
+  blueGrey: '#474550',
   lightGrey: '#d8d8d8',
   lighterGrey: '#efefef',
   darkGrey: '#585858'

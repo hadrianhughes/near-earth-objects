@@ -31,8 +31,6 @@ export const ControlsColumn = styled.section`
 `;
 
 export const DisplayColumn = styled.section`
-  background-color: #474550;
-
   ${minWidth('xlarge')} {
     grid-column: 3 / span 6;
   }
