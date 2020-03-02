@@ -44,7 +44,8 @@ export const ControlsContainer = ({
       query={query}
       onChangeQuery={onChangeQuery}
       onSearch={() => performSearch()}
-      results={formattedResults} />
+      results={formattedResults}
+      sizeUnit={sizeUnit} />
   );
 };
 

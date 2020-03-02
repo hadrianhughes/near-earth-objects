@@ -4,6 +4,7 @@ import {
   Input
 } from './styles';
 import { txtSearch, txtIDPlaceholder } from '../../strings';
+import { SizeUnit } from '../../reducer';
 import Button from '../Button';
 import ResultsList, { Result } from '../ResultsList';
 
@@ -12,13 +13,15 @@ interface PropTypes {
   onChangeQuery: (ChangeEvent) => any;
   onSearch: (MouseEvent) => any;
   results: Array<Result>;
+  sizeUnit: SizeUnit;
 }
 
 const Controls = ({
   query,
   onChangeQuery,
   onSearch,
-  results = []
+  results = [],
+  sizeUnit
 }: PropTypes) => (
   <Fragment>
     <Wrapper flex>
@@ -32,7 +35,7 @@ const Controls = ({
     {
       results.length > 0 ?
         <Wrapper>
-          <ResultsList items={results} />
+          <ResultsList items={results} sizeUnit={sizeUnit} />
         </Wrapper>
         :
         null
