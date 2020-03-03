@@ -58,4 +58,20 @@ describe('reducer function', () => {
 
     expect(reducer(initialState, action)).toStrictEqual(expectedOutput);
   });
+
+  it('Should accept a previous state and a SET_CONTROLS_OPEN action and return the state with updated isControlsOpen', () => {
+    const isControlsOpen = true;
+
+    const action = {
+      type: 'SET_CONTROLS_OPEN',
+      payload: isControlsOpen
+    };
+
+    const expectedOutput = {
+      ...initialState,
+      isControlsOpen
+    };
+
+    expect(reducer(initialState, action)).toStrictEqual(expectedOutput);
+  });
 });

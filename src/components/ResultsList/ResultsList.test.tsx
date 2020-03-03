@@ -16,6 +16,11 @@ describe('ResultsList component', () => {
       id: '2',
       name: 'Item 2',
       diameter: 200
+    },
+    {
+      id: '3',
+      name: 'Item 3',
+      diameter: null
     }
   ];
 
@@ -34,7 +39,7 @@ describe('ResultsList component', () => {
       <ResultsList items={items} sizeUnit={TEST_SIZE_UNIT} />
     );
 
-    expect(component.children().length).toBe(2);
+    expect(component.children().length).toBe(items.length);
   });
 
   it('Should render an `ItemHeading` for each item name', () => {
@@ -51,7 +56,7 @@ describe('ResultsList component', () => {
     });
   });
 
-  it('Should render a table for each item containing diameter', () => {
+  it('Should render a `Details` table for each item containing diameter', () => {
     const component = shallow(
       <ResultsList items={items} sizeUnit={TEST_SIZE_UNIT} />
     );
@@ -59,13 +64,17 @@ describe('ResultsList component', () => {
     component.children().forEach((item, index) => {
       const table = item.find(Details);
 
-      expect(table.length).toBe(1);
-      expect(
-        table
-          .find('td')
-          .last()
-          .text()
-      ).toBe(size(TEST_SIZE_UNIT)(items[index].diameter));
+      if (items[index].diameter) {
+        expect(table.length).toBe(1);
+        expect(
+          table
+            .find('td')
+            .last()
+            .text()
+        ).toBe(size(TEST_SIZE_UNIT)(items[index].diameter));
+      } else {
+        expect(table.length).toBe(0);
+      }
     });
   });
 });

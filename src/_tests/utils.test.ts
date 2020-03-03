@@ -1,36 +1,5 @@
-import { dive, get, size } from '../utils';
+import { get, size, calculateAverageDiameter } from '../utils';
 import { SizeUnit } from '../reducer';
-
-describe('dive function', () => {
-  it('Should accept an object with a populated `children` array and return the first element', () => {
-    const child = { foo: 'bar' };
-
-    const component = {
-      children: [child]
-    };
-
-    expect(dive(component)).toStrictEqual(child);
-  });
-
-  it('Should accept an object with a populated `children` array containing more objects of the same nature, and a number, perform the operation recursively', () => {
-    const child = { foo: 'bar' };
-
-    const component = {
-      children: [
-        {
-          children: [
-            {
-              children: [child]
-            }
-          ]
-        }
-      ]
-    };
-
-    expect(dive(component, 3)).toStrictEqual(child);
-  });
-});
-
 
 describe('get function', () => {
   it('Should accept an array of strings and return a function', () => {
@@ -65,6 +34,12 @@ describe('get function', () => {
 
 
 describe('size function', () => {
+  it('Should accept a value without a size unit and return the given value as a string', () => {
+    const input = 5;
+
+    expect(size(null)(input)).toBe(String(input));
+  });
+
   it('Should accept a SizeUnit and return a function', () => {
     expect(typeof size(SizeUnit.feet)).toBe('function');
   });
@@ -76,5 +51,27 @@ describe('size function', () => {
     expect(size(SizeUnit.miles)(testVal)).toBe(`${testVal}mi`);
     expect(size(SizeUnit.kilometers)(testVal)).toBe(`${testVal}km`);
     expect(size(SizeUnit.meters)(testVal)).toBe(`${testVal}m`);
+  });
+});
+
+
+describe('calculateAverageDiameter function', () => {
+  const min = 2;
+  const max = 10;
+
+  it('Should accept a min and max and return the average of the two', () => {
+    expect(calculateAverageDiameter(min, max)).toBe((min + max) / 2);
+  });
+
+  it('Should return min when max is falsy', () => {
+    expect(calculateAverageDiameter(min, null)).toBe(min);
+  });
+
+  it('Should return max when min is falsy', () => {
+    expect(calculateAverageDiameter(null, max)).toBe(max);
+  });
+
+  it('Should return 0 when both are falsy', () => {
+    expect(calculateAverageDiameter(null, null)).toBe(0);
   });
 });
