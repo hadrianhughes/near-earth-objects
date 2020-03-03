@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 import { rem, minWidth } from '../../styles/tools';
 import { colors } from '../../styles/settings';
+import Input from '../Input';
 
 export const Wrapper = styled.div`
   padding: ${rem(20)};
@@ -16,30 +17,13 @@ export const Wrapper = styled.div`
   ` : ''}
 `;
 
-const inputStyles = css`
-  border: 1px solid ${colors.lightGrey};
-  border-radius: ${rem(10)};
-  box-sizing: border-box;
-  font-size: ${rem(16)};
-  padding: ${rem(10)};
-`;
-
-export const Input = styled.input`
-  ${inputStyles}
-
+export const StyledInput = styled(Input)`
   flex: 1;
   margin-right: ${rem(10)};
-  width: 100%;
 `;
 
-export const DatesWrapper = styled.div`
-  display: flex;
+export const DateInput = styled(Input)`
   margin-top: ${rem(10)};
-  width: 100%;
-`;
-
-export const DateInput = styled.input`
-  ${inputStyles}
 
   &:first-child {
     margin-right: ${rem(10)};

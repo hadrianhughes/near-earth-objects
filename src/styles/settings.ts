@@ -1,6 +1,6 @@
 export const breakpoints = {
   large: 1024,
-  xlarge: 1366
+  xlarge: 1200
 };
 
 export const baseFontSize = 16;

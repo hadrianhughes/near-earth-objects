@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { shallow } from 'enzyme';
 import { SizeUnit } from '../../reducer';
 import Controls from './index';
-import { Wrapper, Input } from './styles';
+import { Wrapper, StyledInput, DateInput } from './styles';
 import Button from '../Button';
 import Radio from '../Radio';
 
@@ -60,7 +60,7 @@ describe('Controls component', () => {
     expect(component.find(Wrapper).length).toBe(2);
   });
 
-  it('Should render an `Input`, `Button` and `Radio` component inside the first `Wrapper`', () => {
+  it('Should render an `Input`, `Button`, `Radio` and two `DateInput` components inside the first `Wrapper`', () => {
     const component = shallow(
       <Controls
         query=""
@@ -74,8 +74,9 @@ describe('Controls component', () => {
 
     const wrapper = component.find(Wrapper);
 
-    expect(wrapper.find(Input).length).toBe(1);
+    expect(wrapper.find(StyledInput).length).toBe(1);
     expect(wrapper.find(Button).length).toBe(1);
+    expect(wrapper.find(DateInput).length).toBe(2);
     expect(wrapper.find(Radio).length).toBe(1);
   });
 });

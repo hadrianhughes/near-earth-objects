@@ -1,9 +1,8 @@
 import React, { Fragment, ChangeEvent, MouseEvent } from 'react';
 import {
   Wrapper,
-  Input,
-  DatesWrapper,
-  DateInput
+  DateInput,
+  StyledInput as Input
 } from './styles';
 import { txtSearch, txtIDPlaceholder } from '../../strings';
 import { SizeUnit } from '../../reducer';
@@ -33,15 +32,12 @@ const Controls = ({
   <Fragment>
     <Wrapper flex>
       <Input
-        type="text"
         value={query}
         placeholder={txtIDPlaceholder}
         onChange={onChangeQuery} />
       <Button text={txtSearch} onClick={onSearch} />
-      <DatesWrapper>
-        <DateInput type="date" />
-        <DateInput type="date" />
-      </DatesWrapper>
+      <DateInput type="date" label="From:" />
+      <DateInput type="date" label="To:" />
       <hr />
       <Radio label="Size in:" items={sizeUnitOptions} setActive={setSizeUnit} />
     </Wrapper>
