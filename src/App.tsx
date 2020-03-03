@@ -5,7 +5,7 @@ import createSagaMiddleware from 'redux-saga';
 import reducer from './reducer';
 import sagas from './sagas';
 
-import Layout from './components/Layout';
+import Layout from './components/Layout/LayoutContainer';
 import GlobalStyles from './styles/global';
 
 const sagaMiddleware = createSagaMiddleware();

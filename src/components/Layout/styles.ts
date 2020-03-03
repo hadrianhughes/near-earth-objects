@@ -17,21 +17,47 @@ export const ControlsColumn = styled.section`
   flex-direction: column;
   height: 100vh;
   justify-content: flex-end;
-  padding-bottom: ${rem(50)};
+  left: 0;
+  padding-bottom: ${rem(100)};
+  position: fixed;
+  top: 0;
+  width: 100%;
 
-  ${props => props.show ? css`display: flex;` : ''}
+  ${props => props.showMobile ? css`display: flex;` : ''}
 
   ${minWidth('xlarge')} {
     border-right: 5px solid ${colors.lightGrey};
     display: block;
     height: auto;
-    padding: 0;
     grid-column: 1 / span 2;
+    padding: 0;
+    position: static;
+    width: auto;
   }
 `;
 
 export const DisplayColumn = styled.section`
   ${minWidth('xlarge')} {
     grid-column: 3 / span 6;
+  }
+`;
+
+export const ToggleButton = styled.button`
+  background: none;
+  border: 10px solid white;
+  border-radius: 50%;
+  bottom: ${rem(20)};
+  height: ${rem(50)};
+  position: fixed;
+  right: ${rem(20)};
+  text-indent: -9999px;
+  width: ${rem(50)};
+
+  ${props => props.open ? css`
+    border: 10px solid ${colors.darkGrey};
+  ` : ''}
+
+  ${minWidth('xlarge')} {
+    display: none;
   }
 `;
