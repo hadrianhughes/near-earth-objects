@@ -16,13 +16,32 @@ export const Wrapper = styled.div`
   ` : ''}
 `;
 
-export const Input = styled.input`
+const inputStyles = css`
   border: 1px solid ${colors.lightGrey};
   border-radius: ${rem(10)};
   box-sizing: border-box;
-  flex: 1;
   font-size: ${rem(16)};
-  margin-right: ${rem(10)};
   padding: ${rem(10)};
+`;
+
+export const Input = styled.input`
+  ${inputStyles}
+
+  flex: 1;
+  margin-right: ${rem(10)};
   width: 100%;
+`;
+
+export const DatesWrapper = styled.div`
+  display: flex;
+  margin-top: ${rem(10)};
+  width: 100%;
+`;
+
+export const DateInput = styled.input`
+  ${inputStyles}
+
+  &:first-child {
+    margin-right: ${rem(10)};
+  }
 `;
