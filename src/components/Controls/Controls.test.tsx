@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { shallow } from 'enzyme';
-import { SizeUnit } from '../../reducer';
+import { SizeUnit } from '../../types';
 import Controls from './index';
 import { Wrapper, StyledInput, DateInput } from './styles';
 import Button from '../Button';

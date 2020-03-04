@@ -9,6 +9,8 @@ import {
   ToggleButton
 } from './styles';
 
+jest.mock('../Controls/ControlsContainer', () => () => <div />);
+
 describe('Layout component', () => {
   const mockSetControls = jest.fn();
   const component = shallow(<Layout isControlsOpen={false} onSetControls={mockSetControls} />);

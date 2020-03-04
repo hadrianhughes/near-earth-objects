@@ -1,4 +1,4 @@
-import { SizeUnit } from './reducer';
+import { SizeUnit } from './types';
 
 export interface Action {
   type: string;

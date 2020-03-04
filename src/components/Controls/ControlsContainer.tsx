@@ -2,7 +2,8 @@ import React, { ChangeEvent } from 'react';
 import { connect } from 'react-redux';
 import Controls from './index';
 import { setQuery, performSearch, setSizeUnit } from '../../actions';
-import { State, SizeUnit } from '../../reducer';
+import { State } from '../../reducer';
+import { SizeUnit } from '../../types';
 import { RawResult } from '../../sagas/performSearch';
 import { get, calculateAverageDiameter } from '../../utils';
 

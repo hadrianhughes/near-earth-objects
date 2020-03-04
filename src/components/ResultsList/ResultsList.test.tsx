@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { SizeUnit } from '../../reducer';
+import { SizeUnit } from '../../types';
 import { size } from '../../utils';
 import ResultsList from './index';
 import { ItemHeading, Details } from './styles';

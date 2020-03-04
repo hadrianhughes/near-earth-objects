@@ -4,6 +4,8 @@ import { shallow } from 'enzyme';
 import Layout from './index';
 import { LayoutContainer } from './LayoutContainer';
 
+jest.mock('../Controls/ControlsContainer', () => () => <div />);
+
 describe('LayoutContainer component', () => {
   const setControlsOpenMock = jest.fn();
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { act } from 'react-test-renderer';
-import { SizeUnit } from '../../reducer';
+import { SizeUnit } from '../../types';
 import { ControlsContainer } from './ControlsContainer';
 import Controls from './index';
 import Button from '../Button';

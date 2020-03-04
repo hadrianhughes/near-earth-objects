@@ -1,4 +1,4 @@
-import { SizeUnit } from './reducer';
+import { SizeUnit } from './types';
 
 export const get = (path: Array<string>) => (source: object, defaultValue?: any): any => {
   const value = source[path[0]];
@@ -30,4 +30,19 @@ export const calculateAverageDiameter = (min: number, max: number): number => {
   if (min) return min;
   if (max) return max;
   return 0;
+};
+
+export const doubleDigit = (value: number): string => {
+  if (value / 10 < 1) return '0' + value;
+  return String(value);
+};
+
+export const formatDate = (date: Date): string => {
+  const dateClone = new Date(date);
+
+  const day = dateClone.getDate();
+  const month = dateClone.getMonth() + 1;
+  const year = dateClone.getFullYear();
+
+  return `${doubleDigit(day)}-${doubleDigit(month)}-${year}`;
 };

@@ -1,25 +1,24 @@
 import { Action } from './actions';
+import { formatDate } from './utils';
 import { Result } from './components/ResultsList';
-
-export enum SizeUnit {
-  feet = 'feet',
-  miles = 'miles',
-  kilometers = 'kilometers',
-  meters = 'meters'
-}
+import { SizeUnit } from './types';
 
 export interface State {
   query: string;
   results: Array<Result>;
   sizeUnit: SizeUnit;
   isControlsOpen: boolean;
+  startDate: string;
+  endDate: string;
 }
 
 export const initialState: State = {
   query: '',
   results: [],
   sizeUnit: SizeUnit.kilometers,
-  isControlsOpen: false
+  isControlsOpen: false,
+  startDate: '01-01-2000',
+  endDate: formatDate(new Date())
 };
 
 function reducer(state: State = initialState, action: Action): State {
@@ -33,6 +32,10 @@ function reducer(state: State = initialState, action: Action): State {
       return { ...state, sizeUnit: action.payload };
     case 'SET_CONTROLS_OPEN':
       return { ...state, isControlsOpen: action.payload };
+    case 'SET_START_DATE':
+      return { ...state, startDate: action.payload };
+    case 'SET_END_DATE':
+      return { ...state, endDate: action.payload };
     default:
       return state;
   }

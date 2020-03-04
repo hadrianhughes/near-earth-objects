@@ -1,6 +1,6 @@
 import React from 'react';
 import { get, size } from '../../utils';
-import { SizeUnit } from '../../reducer';
+import { SizeUnit } from '../../types';
 import {
   ItemButton,
   ItemHeading,

@@ -9,7 +9,7 @@ interface PropTypes {
   type?: string;
   placeholder?: string;
   label?: string;
-  id: string;
+  id?: string;
   value: string;
   onChange: (string) => void;
 }

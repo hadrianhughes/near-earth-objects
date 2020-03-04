@@ -5,7 +5,7 @@ import {
   StyledInput as Input
 } from './styles';
 import { txtSearch, txtIDPlaceholder } from '../../strings';
-import { SizeUnit } from '../../reducer';
+import { SizeUnit } from '../../types';
 import Button from '../Button';
 import Radio, { RadioItem } from '../Radio';
 import ResultsList, { Result } from '../ResultsList';

@@ -1,4 +1,5 @@
-import reducer, { initialState, SizeUnit } from '../reducer';
+import reducer, { initialState } from '../reducer';
+import { SizeUnit } from '../types';
 
 describe('reducer function', () => {
   it('Should accept a previous state and a SET_QUERY action with a valid ID and return the state with updated query', () => {
@@ -70,6 +71,38 @@ describe('reducer function', () => {
     const expectedOutput = {
       ...initialState,
       isControlsOpen
+    };
+
+    expect(reducer(initialState, action)).toStrictEqual(expectedOutput);
+  });
+
+  it('Should accept a previous state and a SET_START_DATE action and return the state with updated startDate', () => {
+    const newDate = '31-01-2020';
+
+    const action = {
+      type: 'SET_START_DATE',
+      payload: newDate
+    };
+
+    const expectedOutput = {
+      ...initialState,
+      startDate: newDate
+    };
+
+    expect(reducer(initialState, action)).toStrictEqual(expectedOutput);
+  });
+
+  it('Should accept a previous state a SET_END_DATE action and return the state with updated endDate', () => {
+    const newDate = '31-01-2020';
+
+    const action = {
+      type: 'SET_END_DATE',
+      payload: newDate
+    };
+
+    const expectedOutput = {
+      ...initialState,
+      endDate: newDate
     };
 
     expect(reducer(initialState, action)).toStrictEqual(expectedOutput);
