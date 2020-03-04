@@ -17,7 +17,7 @@ export const initialState: State = {
   results: [],
   sizeUnit: SizeUnit.kilometers,
   isControlsOpen: false,
-  startDate: '01-01-2000',
+  startDate: formatDate(new Date(2000, 1, 1)),
   endDate: formatDate(new Date())
 };
 

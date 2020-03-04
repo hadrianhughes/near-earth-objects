@@ -44,5 +44,5 @@ export const formatDate = (date: Date): string => {
   const month = dateClone.getMonth() + 1;
   const year = dateClone.getFullYear();
 
-  return `${doubleDigit(day)}-${doubleDigit(month)}-${year}`;
+  return `${year}-${doubleDigit(month)}-${doubleDigit(day)}`;
 };

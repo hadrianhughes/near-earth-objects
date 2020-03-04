@@ -18,6 +18,10 @@ interface PropTypes {
   sizeUnit: SizeUnit;
   sizeUnitOptions: Array<RadioItem>;
   setSizeUnit: (string) => any;
+  startDate: string;
+  endDate: string;
+  setStartDate: (ChangeEvent) => void;
+  setEndDate: (ChangeEvent) => void;
 }
 
 const Controls = ({
@@ -27,7 +31,11 @@ const Controls = ({
   results = [],
   sizeUnit,
   sizeUnitOptions,
-  setSizeUnit
+  setSizeUnit,
+  startDate,
+  endDate,
+  setStartDate,
+  setEndDate
 }: PropTypes) => (
   <Fragment>
     <Wrapper flex>
@@ -36,8 +44,16 @@ const Controls = ({
         placeholder={txtIDPlaceholder}
         onChange={onChangeQuery} />
       <Button text={txtSearch} onClick={onSearch} />
-      <DateInput type="date" label="From:" />
-      <DateInput type="date" label="To:" />
+      <DateInput
+        type="date"
+        label="From:"
+        value={startDate}
+        onChange={setStartDate} />
+      <DateInput
+        type="date"
+        label="To:"
+        value={endDate}
+        onChange={setEndDate} />
       <hr />
       <Radio label="Size in:" items={sizeUnitOptions} setActive={setSizeUnit} />
     </Wrapper>

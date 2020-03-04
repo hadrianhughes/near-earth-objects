@@ -16,7 +16,11 @@ describe('ControlsContainer component', () => {
         performSearch={() => {}}
         results={[]}
         sizeUnit={SizeUnit.feet}
-        setSizeUnit={() => {}} />
+        setSizeUnit={() => {}}
+        startDate=""
+        endDate=""
+        setStartDate={() => {}}
+        setEndDate={() => {}} />
     );
 
     expect(component.find(Controls).props().query).toBe(query);
@@ -26,12 +30,16 @@ describe('ControlsContainer component', () => {
     const setQuery = jest.fn();
     const component = shallow(
       <ControlsContainer
-        query={''}
+        query=""
         setQuery={setQuery}
         performSearch={() => {}}
         results={[]}
         sizeUnit={SizeUnit.feet}
-        setSizeUnit={() => {}} />
+        setSizeUnit={() => {}}
+        startDate=""
+        endDate=""
+        setStartDate={() => {}}
+        setEndDate={() => {}} />
     );
 
     const controls = component.find(Controls);
@@ -52,12 +60,16 @@ describe('ControlsContainer component', () => {
     const performSearch = jest.fn();
     const component = shallow(
       <ControlsContainer
-        query={''}
+        query=""
         setQuery={() => {}}
         performSearch={performSearch}
         results={[]}
         sizeUnit={SizeUnit.feet}
-        setSizeUnit={() => {}} />
+        setSizeUnit={() => {}}
+        startDate=""
+        endDate=""
+        setStartDate={() => {}}
+        setEndDate={() => {}} />
     );
 
     const searchButton = component.find(Controls).dive().find(Button);
@@ -100,7 +112,11 @@ describe('ControlsContainer component', () => {
         performSearch={() => {}}
         results={resultsData}
         sizeUnit={SizeUnit.feet}
-        setSizeUnit={() => {}} />
+        setSizeUnit={() => {}}
+        startDate=""
+        endDate=""
+        setStartDate={() => {}}
+        setEndDate={() => {}} />
     );
 
     const controls = component.find(Controls);
@@ -110,5 +126,45 @@ describe('ControlsContainer component', () => {
       expect(result.name).toBe(resultsData[index].name);
       expect(typeof result.diameter).toBe('number');
     });
+  });
+
+  it('Should accept a `setStartDate` prop and pass a prop by the same name to `Controls` which delegates to this function', () => {
+    const setStartDate = jest.fn();
+    const setEndDate = jest.fn();
+
+    const component = shallow(
+      <ControlsContainer
+        query={''}
+        setQuery={() => {}}
+        performSearch={() => {}}
+        results={[]}
+        sizeUnit={SizeUnit.feet}
+        setSizeUnit={() => {}}
+        startDate=""
+        endDate=""
+        setStartDate={setStartDate}
+        setEndDate={setEndDate} />
+    );
+
+    const controls = component.find(Controls);
+
+    const testValue = 'test value';
+
+    act(() => {
+      controls.props().setStartDate({
+        target: {
+          value: testValue
+        }
+      })
+
+      controls.props().setEndDate({
+        target: {
+          value: testValue
+        }
+      });
+    });
+
+    expect(setStartDate).toHaveBeenLastCalledWith(testValue);
+    expect(setEndDate).toHaveBeenLastCalledWith(testValue);
   });
 });

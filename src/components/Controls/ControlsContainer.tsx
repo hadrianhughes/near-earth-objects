@@ -1,7 +1,13 @@
 import React, { ChangeEvent } from 'react';
 import { connect } from 'react-redux';
 import Controls from './index';
-import { setQuery, performSearch, setSizeUnit } from '../../actions';
+import {
+  setQuery,
+  performSearch,
+  setSizeUnit,
+  setStartDate,
+  setEndDate
+} from '../../actions';
 import { State } from '../../reducer';
 import { SizeUnit } from '../../types';
 import { RawResult } from '../../sagas/performSearch';
@@ -14,6 +20,10 @@ interface PropTypes {
   results: Array<RawResult>;
   sizeUnit: SizeUnit;
   setSizeUnit: (SizeUnit) => void;
+  startDate: string;
+  endDate: string;
+  setStartDate: (string) => void;
+  setEndDate: (string) => void;
 }
 
 export const ControlsContainer = ({
@@ -22,7 +32,11 @@ export const ControlsContainer = ({
   performSearch,
   results,
   sizeUnit,
-  setSizeUnit
+  setSizeUnit,
+  startDate,
+  endDate,
+  setStartDate,
+  setEndDate
 }: PropTypes) => {
   const onChangeQuery = (e: ChangeEvent<HTMLInputElement>): void =>
     setQuery(e.target.value);
@@ -60,6 +74,8 @@ export const ControlsContainer = ({
   ];
 
   const handleSizeUnit = (id: string) => () => setSizeUnit(SizeUnit[id]);
+  const handleStartDate = (e: ChangeEvent): void => setStartDate((e.target as HTMLInputElement).value);
+  const handleEndDate = (e: ChangeEvent): void => setEndDate((e.target as HTMLInputElement).value);
 
   return (
     <Controls
@@ -69,16 +85,28 @@ export const ControlsContainer = ({
       results={formattedResults}
       sizeUnit={sizeUnit}
       sizeUnitOptions={sizeUnitOptions}
-      setSizeUnit={handleSizeUnit} />
+      setSizeUnit={handleSizeUnit}
+      startDate={startDate}
+      endDate={endDate}
+      setStartDate={handleStartDate}
+      setEndDate={handleEndDate} />
   );
 };
 
 const mapStateToProps = (state: State) => ({
   query: state.query,
   results: state.results,
-  sizeUnit: state.sizeUnit
+  sizeUnit: state.sizeUnit,
+  startDate: state.startDate,
+  endDate: state.endDate
 });
 
-const mapDispatchToProps = { setQuery, performSearch, setSizeUnit };
+const mapDispatchToProps = {
+  setQuery,
+  performSearch,
+  setSizeUnit,
+  setStartDate,
+  setEndDate
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(ControlsContainer);

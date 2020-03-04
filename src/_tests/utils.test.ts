@@ -95,7 +95,7 @@ describe('formatDate function', () => {
       parseInt(day)
     );
 
-    expect(formatDate(date)).toBe(`${day}-${month}-${year}`);
+    expect(formatDate(date)).toBe(`${year}-${month}-${day}`)
   });
 });
 
