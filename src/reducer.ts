@@ -8,8 +8,7 @@ export interface State {
   results: Array<Result>;
   sizeUnit: SizeUnit;
   isControlsOpen: boolean;
-  startDate: string;
-  endDate: string;
+  date: string;
 }
 
 export const initialState: State = {
@@ -17,8 +16,7 @@ export const initialState: State = {
   results: [],
   sizeUnit: SizeUnit.kilometers,
   isControlsOpen: false,
-  startDate: formatDate(new Date(2000, 1, 1)),
-  endDate: formatDate(new Date())
+  date: formatDate(new Date())
 };
 
 function reducer(state: State = initialState, action: Action): State {
@@ -32,10 +30,8 @@ function reducer(state: State = initialState, action: Action): State {
       return { ...state, sizeUnit: action.payload };
     case 'SET_CONTROLS_OPEN':
       return { ...state, isControlsOpen: action.payload };
-    case 'SET_START_DATE':
-      return { ...state, startDate: action.payload };
-    case 'SET_END_DATE':
-      return { ...state, endDate: action.payload };
+    case 'SET_DATE':
+      return { ...state, date: action.payload };
     default:
       return state;
   }

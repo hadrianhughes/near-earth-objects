@@ -7,20 +7,21 @@ import Controls from './index';
 import Button from '../Button';
 
 describe('ControlsContainer component', () => {
+  const basicProps = {
+    query: '',
+    setQuery: () => {},
+    performSearch: () => {},
+    results: [],
+    sizeUnit: SizeUnit.feet,
+    setSizeUnit: () => {},
+    date: '',
+    setDate: () => {}
+  };
+
   it('Should accept a `query` prop and pass it to Controls with the same name', () => {
     const query = 'test query';
     const component = shallow(
-      <ControlsContainer
-        query={query}
-        setQuery={() => {}}
-        performSearch={() => {}}
-        results={[]}
-        sizeUnit={SizeUnit.feet}
-        setSizeUnit={() => {}}
-        startDate=""
-        endDate=""
-        setStartDate={() => {}}
-        setEndDate={() => {}} />
+      <ControlsContainer {...basicProps} query={query} />
     );
 
     expect(component.find(Controls).props().query).toBe(query);
@@ -29,17 +30,7 @@ describe('ControlsContainer component', () => {
   it('Should accept an `setQuery` prop and pass a function called `onChangeQuery` to Controls which defers to it', () => {
     const setQuery = jest.fn();
     const component = shallow(
-      <ControlsContainer
-        query=""
-        setQuery={setQuery}
-        performSearch={() => {}}
-        results={[]}
-        sizeUnit={SizeUnit.feet}
-        setSizeUnit={() => {}}
-        startDate=""
-        endDate=""
-        setStartDate={() => {}}
-        setEndDate={() => {}} />
+      <ControlsContainer {...basicProps} setQuery={setQuery} />
     );
 
     const controls = component.find(Controls);
@@ -59,17 +50,7 @@ describe('ControlsContainer component', () => {
   it('Should accept a performSearch prop and call it when the search button is pressed', () => {
     const performSearch = jest.fn();
     const component = shallow(
-      <ControlsContainer
-        query=""
-        setQuery={() => {}}
-        performSearch={performSearch}
-        results={[]}
-        sizeUnit={SizeUnit.feet}
-        setSizeUnit={() => {}}
-        startDate=""
-        endDate=""
-        setStartDate={() => {}}
-        setEndDate={() => {}} />
+      <ControlsContainer {...basicProps} performSearch={performSearch} />
     );
 
     const searchButton = component.find(Controls).dive().find(Button);
@@ -106,17 +87,7 @@ describe('ControlsContainer component', () => {
     ];
 
     const component = shallow(
-      <ControlsContainer
-        query={''}
-        setQuery={() => {}}
-        performSearch={() => {}}
-        results={resultsData}
-        sizeUnit={SizeUnit.feet}
-        setSizeUnit={() => {}}
-        startDate=""
-        endDate=""
-        setStartDate={() => {}}
-        setEndDate={() => {}} />
+      <ControlsContainer {...basicProps} results={resultsData} />
     );
 
     const controls = component.find(Controls);
@@ -129,21 +100,10 @@ describe('ControlsContainer component', () => {
   });
 
   it('Should accept a `setStartDate` prop and pass a prop by the same name to `Controls` which delegates to this function', () => {
-    const setStartDate = jest.fn();
-    const setEndDate = jest.fn();
+    const setDate = jest.fn();
 
     const component = shallow(
-      <ControlsContainer
-        query={''}
-        setQuery={() => {}}
-        performSearch={() => {}}
-        results={[]}
-        sizeUnit={SizeUnit.feet}
-        setSizeUnit={() => {}}
-        startDate=""
-        endDate=""
-        setStartDate={setStartDate}
-        setEndDate={setEndDate} />
+      <ControlsContainer {...basicProps} setDate={setDate} />
     );
 
     const controls = component.find(Controls);
@@ -151,20 +111,13 @@ describe('ControlsContainer component', () => {
     const testValue = 'test value';
 
     act(() => {
-      controls.props().setStartDate({
+      controls.props().setDate({
         target: {
           value: testValue
         }
       })
-
-      controls.props().setEndDate({
-        target: {
-          value: testValue
-        }
-      });
     });
 
-    expect(setStartDate).toHaveBeenLastCalledWith(testValue);
-    expect(setEndDate).toHaveBeenLastCalledWith(testValue);
+    expect(setDate).toHaveBeenLastCalledWith(testValue);
   });
 });

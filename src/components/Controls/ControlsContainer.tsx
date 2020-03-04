@@ -5,8 +5,7 @@ import {
   setQuery,
   performSearch,
   setSizeUnit,
-  setStartDate,
-  setEndDate
+  setDate,
 } from '../../actions';
 import { State } from '../../reducer';
 import { SizeUnit } from '../../types';
@@ -20,10 +19,8 @@ interface PropTypes {
   results: Array<RawResult>;
   sizeUnit: SizeUnit;
   setSizeUnit: (SizeUnit) => void;
-  startDate: string;
-  endDate: string;
-  setStartDate: (string) => void;
-  setEndDate: (string) => void;
+  date: string;
+  setDate: (string) => void;
 }
 
 export const ControlsContainer = ({
@@ -33,10 +30,8 @@ export const ControlsContainer = ({
   results,
   sizeUnit,
   setSizeUnit,
-  startDate,
-  endDate,
-  setStartDate,
-  setEndDate
+  date,
+  setDate
 }: PropTypes) => {
   const onChangeQuery = (e: ChangeEvent<HTMLInputElement>): void =>
     setQuery(e.target.value);
@@ -74,8 +69,7 @@ export const ControlsContainer = ({
   ];
 
   const handleSizeUnit = (id: string) => () => setSizeUnit(SizeUnit[id]);
-  const handleStartDate = (e: ChangeEvent): void => setStartDate((e.target as HTMLInputElement).value);
-  const handleEndDate = (e: ChangeEvent): void => setEndDate((e.target as HTMLInputElement).value);
+  const handleChangeDate = (e: ChangeEvent) => setDate((e.target as HTMLInputElement).value);
 
   return (
     <Controls
@@ -86,10 +80,8 @@ export const ControlsContainer = ({
       sizeUnit={sizeUnit}
       sizeUnitOptions={sizeUnitOptions}
       setSizeUnit={handleSizeUnit}
-      startDate={startDate}
-      endDate={endDate}
-      setStartDate={handleStartDate}
-      setEndDate={handleEndDate} />
+      date={date}
+      setDate={handleChangeDate} />
   );
 };
 
@@ -97,16 +89,14 @@ const mapStateToProps = (state: State) => ({
   query: state.query,
   results: state.results,
   sizeUnit: state.sizeUnit,
-  startDate: state.startDate,
-  endDate: state.endDate
+  date: state.date
 });
 
 const mapDispatchToProps = {
   setQuery,
   performSearch,
   setSizeUnit,
-  setStartDate,
-  setEndDate
+  setDate
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ControlsContainer);

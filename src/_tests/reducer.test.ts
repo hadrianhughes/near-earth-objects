@@ -76,33 +76,17 @@ describe('reducer function', () => {
     expect(reducer(initialState, action)).toStrictEqual(expectedOutput);
   });
 
-  it('Should accept a previous state and a SET_START_DATE action and return the state with updated startDate', () => {
+  it('Should accept a previous state and a SET_DATE action and return the state with updated date', () => {
     const newDate = '31-01-2020';
 
     const action = {
-      type: 'SET_START_DATE',
+      type: 'SET_DATE',
       payload: newDate
     };
 
     const expectedOutput = {
       ...initialState,
-      startDate: newDate
-    };
-
-    expect(reducer(initialState, action)).toStrictEqual(expectedOutput);
-  });
-
-  it('Should accept a previous state a SET_END_DATE action and return the state with updated endDate', () => {
-    const newDate = '31-01-2020';
-
-    const action = {
-      type: 'SET_END_DATE',
-      payload: newDate
-    };
-
-    const expectedOutput = {
-      ...initialState,
-      endDate: newDate
+      date: newDate
     };
 
     expect(reducer(initialState, action)).toStrictEqual(expectedOutput);

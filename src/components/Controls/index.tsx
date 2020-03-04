@@ -18,10 +18,8 @@ interface PropTypes {
   sizeUnit: SizeUnit;
   sizeUnitOptions: Array<RadioItem>;
   setSizeUnit: (string) => any;
-  startDate: string;
-  endDate: string;
-  setStartDate: (ChangeEvent) => void;
-  setEndDate: (ChangeEvent) => void;
+  date: string;
+  setDate: (ChangeEvent) => void;
 }
 
 const Controls = ({
@@ -32,10 +30,8 @@ const Controls = ({
   sizeUnit,
   sizeUnitOptions,
   setSizeUnit,
-  startDate,
-  endDate,
-  setStartDate,
-  setEndDate
+  date,
+  setDate
 }: PropTypes) => (
   <Fragment>
     <Wrapper flex>
@@ -47,13 +43,8 @@ const Controls = ({
       <DateInput
         type="date"
         label="From:"
-        value={startDate}
-        onChange={setStartDate} />
-      <DateInput
-        type="date"
-        label="To:"
-        value={endDate}
-        onChange={setEndDate} />
+        value={date}
+        onChange={setDate} />
       <hr />
       <Radio label="Size in:" items={sizeUnitOptions} setActive={setSizeUnit} />
     </Wrapper>

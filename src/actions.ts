@@ -24,12 +24,7 @@ export const setControlsOpen = (isOpen: boolean): Action => ({
   payload: isOpen
 });
 
-export const setStartDate = (date: string): Action => ({
-  type: 'SET_START_DATE',
-  payload: date
-});
-
-export const setEndDate = (date: string): Action => ({
-  type: 'SET_END_DATE',
+export const setDate = (date: string): Action => ({
+  type: 'SET_DATE',
   payload: date
 });
