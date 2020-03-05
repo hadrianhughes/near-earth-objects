@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
     padding: ${rem(10)};
   }
 
-  ${props => props.wrap ? css`
+  ${props => props.doWrap ? css`
     flex-wrap: wrap;
     justify-content: space-between;
   ` : ''}

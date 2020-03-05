@@ -34,7 +34,7 @@ const Controls = ({
   setDate
 }: PropTypes) => (
   <Fragment>
-    <Wrapper wrap>
+    <Wrapper doWrap>
       <Input
         value={query}
         placeholder={txtIDPlaceholder}
