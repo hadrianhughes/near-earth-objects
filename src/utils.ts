@@ -1,6 +1,8 @@
 import { SizeUnit, ResponseType, RawResult } from './types';
 
 export const get = (path: string | Array<string>) => (source: object, defaultValue?: any): any => {
+  if (!source) return defaultValue || undefined;
+
   const value = typeof path === 'string' ? source[path] : source[path[0]];
 
   if (typeof path === 'string' || path.length === 1) {

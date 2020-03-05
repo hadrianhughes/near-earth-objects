@@ -1,8 +1,13 @@
 import React from 'react';
 import { Canvas } from './styles';
 
-const Display = () => (
-  <Canvas></Canvas>
+interface PropTypes {
+  canvasRef: object;
+}
+
+const Display = ({ canvasRef }: PropTypes) => (
+  <Canvas ref={canvasRef}>
+  </Canvas>
 );
 
 export default Display;

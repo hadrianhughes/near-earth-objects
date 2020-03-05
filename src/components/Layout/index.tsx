@@ -7,7 +7,7 @@ import {
   ToggleButton
 } from './styles';
 import ControlsContainer from '../Controls/ControlsContainer';
-import Display from '../Display';
+import Display from '../Display/DisplayContainer';
 
 interface PropTypes {
   isControlsOpen: boolean;
