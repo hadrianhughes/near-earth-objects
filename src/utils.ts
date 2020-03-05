@@ -46,3 +46,21 @@ export const formatDate = (date: Date): string => {
 
   return `${year}-${doubleDigit(month)}-${doubleDigit(day)}`;
 };
+
+export const stringToDate = (dateString: string): Date => {
+  if (!/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.test(dateString)) {
+    return null;
+  }
+
+  return new Date(dateString);
+};
+
+export const changeDateBy = (changeBy: number) => (date: Date): Date => {
+  const newDate = new Date(date);
+  newDate.setDate(newDate.getDate() + changeBy);
+
+  return newDate;
+};
+
+export const compose = (...fns: Array<Function>) => (value?: any) =>
+  fns.reverse().reduce((acc, fn) => fn(acc), value);

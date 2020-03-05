@@ -3,7 +3,10 @@ import {
   size,
   calculateAverageDiameter,
   formatDate,
-  doubleDigit
+  doubleDigit,
+  stringToDate,
+  changeDateBy,
+  compose
 } from '../utils';
 import { SizeUnit } from '../types';
 
@@ -117,5 +120,98 @@ describe('doubleDigit function', () => {
     expect(doubleDigit(10)).toBe('10');
     expect(doubleDigit(25)).toBe('25');
     expect(doubleDigit(99)).toBe('99');
+  });
+});
+
+
+describe('stringToDate function', () => {
+  it('Should accept a string in the format yyyy-mm-dd and return a date object', () => {
+    const dateString = '2020-01-01';
+
+    const expectedDate = new Date(2020, 0, 1);
+
+    expect(stringToDate(dateString)).toStrictEqual(expectedDate);
+  });
+
+  it('Should accept a string not in the wrong format and return null', () => {
+    const dateString = 'wrong';
+
+    expect(stringToDate(dateString)).toBe(null);
+  });
+});
+
+describe('changeDateBy function', () => {
+  it('Should accept an integer and return a function', () => {
+    expect(typeof changeDateBy(5)).toBe('function');
+  });
+
+  it('Should accept an integer and date and return a new date increased by the given number', () => {
+    const year = 2020;
+    const month = 0;
+    const day = 1;
+
+    const date = new Date(year, month, day);
+    const changeBy = 5;
+
+    const expectedOutput = new Date(2020, 0, 6);
+
+    expect(changeDateBy(changeBy)(date)).toStrictEqual(expectedOutput);
+  });
+
+  it('Should accept an integer and date at the end of a month and return a date in the next month', () => {
+    const year = 2020;
+    const month = 0;
+    const day = 31;
+
+    const date = new Date(year, month, day);
+    const changeBy = 1;
+
+    const expectedOutput = new Date(year, month + 1, 1);
+
+    expect(changeDateBy(changeBy)(date)).toStrictEqual(expectedOutput);
+  });
+});
+
+
+describe('compose function', () => {
+  it('Should accept any number of function arguments and return a single function', () => {
+    expect(
+      typeof compose(
+        () => {},
+        () => {}
+      )
+    ).toBe('function');
+  });
+
+  it('Should return a function which calls all of the constituent functions', () => {
+    const fn1 = jest.fn();
+    const fn2 = jest.fn();
+    const fn3 = jest.fn();
+
+    const composedFn = compose(fn1, fn2, fn3);
+    composedFn();
+
+    expect(fn1).toHaveBeenCalled();
+    expect(fn2).toHaveBeenCalled();
+    expect(fn3).toHaveBeenCalled();
+  });
+
+  it('Should return a function which passes a given value down the pipeline of functions from right to left', () => {
+    const trim = str => str.trim();
+    const toUpper = str => str.toUpperCase();
+    const words = str => str.split(' ');
+
+    const testString = '  hello world   ';
+    const expectedOutput = ['HELLO', 'WORLD'];
+
+    const composedFn = compose(words, toUpper, trim);
+
+    expect(composedFn(testString)).toStrictEqual(
+      words(
+        toUpper(
+          trim(testString)
+        )
+      )
+    );
   });
 });

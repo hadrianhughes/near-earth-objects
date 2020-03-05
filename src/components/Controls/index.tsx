@@ -42,7 +42,7 @@ const Controls = ({
       <Button text={txtSearch} onClick={onSearch} />
       <DateInput
         type="date"
-        label="From:"
+        label="Week of:"
         value={date}
         onChange={setDate} />
       <hr />
