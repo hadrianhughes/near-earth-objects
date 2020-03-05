@@ -1,5 +1,5 @@
 import { Action } from './actions';
-import { formatDate } from './utils';
+import { formatDate, compose, changeDateBy } from './utils';
 import { Result } from './components/ResultsList';
 import { SizeUnit } from './types';
 
@@ -16,7 +16,7 @@ export const initialState: State = {
   results: [],
   sizeUnit: SizeUnit.kilometers,
   isControlsOpen: false,
-  date: formatDate(new Date())
+  date: compose(formatDate, changeDateBy(-7))(new Date())
 };
 
 function reducer(state: State = initialState, action: Action): State {

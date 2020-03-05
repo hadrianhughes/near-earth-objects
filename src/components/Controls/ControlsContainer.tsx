@@ -12,7 +12,10 @@ import { SizeUnit, RawResult } from '../../types';
 import {
   get,
   calculateAverageDiameter,
-  toFixed
+  toFixed,
+  changeDateBy,
+  compose,
+  formatDate
 } from '../../utils';
 
 interface PropTypes {
@@ -49,6 +52,8 @@ export const ControlsContainer = ({
     })()
   }));
 
+  const maxDate: string = compose(formatDate, changeDateBy(-7))(new Date());
+
   const sizeUnitOptions = [
     {
       id: 'feet',
@@ -84,6 +89,7 @@ export const ControlsContainer = ({
       sizeUnit={sizeUnit}
       sizeUnitOptions={sizeUnitOptions}
       setSizeUnit={handleSizeUnit}
+      maxDate={maxDate}
       date={date}
       setDate={handleChangeDate} />
   );

@@ -10,6 +10,8 @@ interface PropTypes {
   placeholder?: string;
   label?: string;
   id?: string;
+  maxDate?: string;
+  minDate?: string;
   value: string;
   onChange: (string) => void;
 }
@@ -21,7 +23,9 @@ const Input = ({
   id,
   label,
   value,
-  onChange
+  onChange,
+  maxDate,
+  minDate
 }: PropTypes) => {
   const hasLabel = Boolean(label);
 
@@ -32,6 +36,8 @@ const Input = ({
       value={value}
       onChange={onChange}
       id={id}
+      max={maxDate}
+      min={minDate}
       placeholder={placeholder} />;
 
   if (label) {

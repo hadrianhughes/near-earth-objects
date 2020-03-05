@@ -18,6 +18,7 @@ interface PropTypes {
   sizeUnit: SizeUnit;
   sizeUnitOptions: Array<RadioItem>;
   setSizeUnit: (string) => any;
+  maxDate: string;
   date: string;
   setDate: (ChangeEvent) => void;
 }
@@ -30,6 +31,7 @@ const Controls = ({
   sizeUnit,
   sizeUnitOptions,
   setSizeUnit,
+  maxDate,
   date,
   setDate
 }: PropTypes) => (
@@ -43,6 +45,7 @@ const Controls = ({
       <DateInput
         type="date"
         label="Week of:"
+        maxDate={maxDate}
         value={date}
         onChange={setDate} />
       <hr />
