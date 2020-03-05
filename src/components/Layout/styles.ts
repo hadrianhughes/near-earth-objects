@@ -16,8 +16,8 @@ export const ControlsColumn = styled.section`
   display: none;
   flex-direction: column;
   height: 100vh;
-  justify-content: flex-end;
   left: 0;
+  max-height: 100vh;
   padding-bottom: ${rem(100)};
   position: fixed;
   top: 0;
@@ -27,7 +27,7 @@ export const ControlsColumn = styled.section`
 
   ${minWidth('xlarge')} {
     border-right: 5px solid ${colors.lightGrey};
-    display: block;
+    display: flex;
     height: auto;
     grid-column: 1 / span 2;
     padding: 0;

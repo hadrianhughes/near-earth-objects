@@ -7,7 +7,8 @@ import {
   stringToDate,
   changeDateBy,
   compose,
-  responseToResults
+  responseToResults,
+  toFixed
 } from '../utils';
 import { SizeUnit } from '../types';
 
@@ -262,5 +263,27 @@ describe('responseToResults function', () => {
     ];
 
     expect(responseToResults(response)).toStrictEqual(expectedOutput);
+  });
+});
+
+
+describe('toFixed function', () => {
+  it('Should accept an integer and return a function', () => {
+    expect(typeof toFixed(1)).toBe('function');
+    expect(typeof toFixed(2)).toBe('function');
+  });
+
+  it('Should accept a second integer and return the same integer', () => {
+    const testValue = 5;
+
+    expect(toFixed(2)(testValue)).toBe(testValue);
+  });
+
+  it('Should accept a decimal number as the second argument and return than number rounded to n places', () => {
+    const testValue = 5.123456;
+
+    expect(toFixed(1)(testValue)).toBe(5.1);
+    expect(toFixed(2)(testValue)).toBe(5.12);
+    expect(toFixed(3)(testValue)).toBe(5.123);
   });
 });

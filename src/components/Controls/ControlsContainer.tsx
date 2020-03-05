@@ -9,7 +9,11 @@ import {
 } from '../../actions';
 import { State } from '../../reducer';
 import { SizeUnit, RawResult } from '../../types';
-import { get, calculateAverageDiameter } from '../../utils';
+import {
+  get,
+  calculateAverageDiameter,
+  toFixed
+} from '../../utils';
 
 interface PropTypes {
   query: string;
@@ -40,7 +44,8 @@ export const ControlsContainer = ({
     id: r.id,
     diameter: (() => {
       const sizes = get(['estimated_diameter', sizeUnit])(r);
-      return calculateAverageDiameter(sizes.estimated_diameter_min, sizes.estimated_diameter_max);
+      const average = calculateAverageDiameter(sizes.estimated_diameter_min, sizes.estimated_diameter_max);
+      return toFixed(2)(average);
     })()
   }));
 

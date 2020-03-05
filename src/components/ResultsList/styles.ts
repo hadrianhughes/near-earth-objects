@@ -2,6 +2,15 @@ import styled from 'styled-components';
 import { colors } from '../../styles/settings';
 import { rem } from '../../styles/tools';
 
+export const List = styled.ul`
+  width: 100%;
+`;
+
+export const Item = styled.li`
+  margin-bottom: ${rem(10)};
+  padding: 0 ${rem(10)};
+`;
+
 export const ItemButton = styled.button`
   background-color: ${colors.white};
   border: 1px dashed ${colors.lightGrey};

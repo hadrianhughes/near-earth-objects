@@ -34,7 +34,7 @@ const Controls = ({
   setDate
 }: PropTypes) => (
   <Fragment>
-    <Wrapper flex>
+    <Wrapper wrap>
       <Input
         value={query}
         placeholder={txtIDPlaceholder}
@@ -50,7 +50,7 @@ const Controls = ({
     </Wrapper>
     {
       results.length > 0 ?
-        <Wrapper>
+        <Wrapper stretch>
           <ResultsList items={results} sizeUnit={sizeUnit} />
         </Wrapper>
         :

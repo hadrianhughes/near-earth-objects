@@ -70,3 +70,8 @@ export const responseToResults = (r: ResponseType): Array<RawResult> => (
   Object.keys(r.near_earth_objects)
     .reduce((acc, key) => [ ...acc, ...r.near_earth_objects[key] ], [])
 );
+
+export const toFixed = (n: number) => (x: number): number => {
+  const pow = Math.pow(10, n);
+  return Math.round(x * pow) / pow;
+};

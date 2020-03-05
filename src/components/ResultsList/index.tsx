@@ -2,6 +2,8 @@ import React from 'react';
 import { get, size } from '../../utils';
 import { SizeUnit } from '../../types';
 import {
+  List,
+  Item,
   ItemButton,
   ItemHeading,
   Details,
@@ -20,10 +22,10 @@ interface PropTypes {
 }
 
 const ResultsList = ({ items = [], sizeUnit }: PropTypes) => (
-  <ul>
+  <List>
     {
       items.map(item =>
-        <li key={item.id}>
+        <Item key={item.id}>
           <ItemButton>
             <ItemHeading>{item.name}</ItemHeading>
             {
@@ -40,10 +42,10 @@ const ResultsList = ({ items = [], sizeUnit }: PropTypes) => (
                 null
             }
           </ItemButton>
-        </li>
+        </Item>
       )
     }
-  </ul>
+  </List>
 );
 
 export default ResultsList;

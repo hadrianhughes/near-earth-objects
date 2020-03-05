@@ -3,7 +3,12 @@ import { shallow } from 'enzyme';
 import { SizeUnit } from '../../types';
 import { size } from '../../utils';
 import ResultsList from './index';
-import { ItemHeading, Details } from './styles';
+import {
+  ItemHeading,
+  Details,
+  List,
+  Item
+} from './styles';
 
 describe('ResultsList component', () => {
   const items = [
@@ -26,20 +31,24 @@ describe('ResultsList component', () => {
 
   const TEST_SIZE_UNIT = SizeUnit.feet;
 
-  it('Should always render an `ul` element', () => {
+  it('Should always render a `List`', () => {
     const component = shallow(
       <ResultsList items={[]} sizeUnit={TEST_SIZE_UNIT} />
     );
 
-    expect(component.type()).toBe('ul');
+    expect(component.type()).toBe(List);
   });
 
-  it('Should render an `li` for each item', () => {
+  it('Should render an `Item` for each item', () => {
     const component = shallow(
       <ResultsList items={items} sizeUnit={TEST_SIZE_UNIT} />
     );
 
     expect(component.children().length).toBe(items.length);
+
+    component.children().forEach(child => {
+      expect(child.type()).toBe(Item);
+    });
   });
 
   it('Should render an `ItemHeading` for each item name', () => {
