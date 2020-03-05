@@ -8,8 +8,7 @@ import {
   setDate,
 } from '../../actions';
 import { State } from '../../reducer';
-import { SizeUnit } from '../../types';
-import { RawResult } from '../../sagas/performSearch';
+import { SizeUnit, RawResult } from '../../types';
 import { get, calculateAverageDiameter } from '../../utils';
 
 interface PropTypes {

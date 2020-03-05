@@ -6,7 +6,8 @@ import {
   doubleDigit,
   stringToDate,
   changeDateBy,
-  compose
+  compose,
+  responseToResults
 } from '../utils';
 import { SizeUnit } from '../types';
 
@@ -38,6 +39,15 @@ describe('get function', () => {
 
     expect(get(path)(object)).toBe(undefined);
     expect(get(path)(object, 'default')).toBe('default');
+  });
+
+  it('Should accept a string rather than an array and return that property', () => {
+    const path = 'foo';
+    const object = {
+      foo: 'bar'
+    };
+
+    expect(get(path)(object)).toBe(object.foo);
   });
 });
 
@@ -213,5 +223,44 @@ describe('compose function', () => {
         )
       )
     );
+  });
+});
+
+
+describe('responseToResults function', () => {
+  it('Should accept an object of type Response and return an array of objects', () => {
+    const response = {
+      near_earth_objects: {
+        example1: [
+          {
+            id: '1',
+            name: 'One',
+            estimated_diameter: {}
+          }
+        ],
+        example2: [
+          {
+            id: '2',
+            name: 'Two',
+            estimated_diameter: {}
+          }
+        ]
+      }
+    };
+
+    const expectedOutput = [
+      {
+        id: '1',
+        name: 'One',
+        estimated_diameter: {}
+      },
+      {
+        id: '2',
+        name: 'Two',
+        estimated_diameter: {}
+      }
+    ];
+
+    expect(responseToResults(response)).toStrictEqual(expectedOutput);
   });
 });

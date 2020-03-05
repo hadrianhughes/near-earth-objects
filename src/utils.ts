@@ -1,9 +1,9 @@
-import { SizeUnit } from './types';
+import { SizeUnit, ResponseType, RawResult } from './types';
 
-export const get = (path: Array<string>) => (source: object, defaultValue?: any): any => {
-  const value = source[path[0]];
+export const get = (path: string | Array<string>) => (source: object, defaultValue?: any): any => {
+  const value = typeof path === 'string' ? source[path] : source[path[0]];
 
-  if (path.length === 1) {
+  if (typeof path === 'string' || path.length === 1) {
     return value === undefined ? defaultValue : value;
   }
 
@@ -62,5 +62,11 @@ export const changeDateBy = (changeBy: number) => (date: Date): Date => {
   return newDate;
 };
 
-export const compose = (...fns: Array<Function>) => (value?: any) =>
-  fns.reverse().reduce((acc, fn) => fn(acc), value);
+export const compose = (...fns: Array<Function>) => (value?: any) => (
+  fns.reduceRight((acc, fn) => fn(acc), value)
+);
+
+export const responseToResults = (r: ResponseType): Array<RawResult> => (
+  Object.keys(r.near_earth_objects)
+    .reduce((acc, key) => [ ...acc, ...r.near_earth_objects[key] ], [])
+);
