@@ -69,8 +69,8 @@ describe('ControlsContainer component', () => {
         name: 'One',
         estimated_diameter: {
           feet: {
-            estimated_diameter_min: 5,
-            estimated_diameter_max: 10
+            estimated_diameter_min: 3,
+            estimated_diameter_max: 6
           }
         }
       },
@@ -79,8 +79,8 @@ describe('ControlsContainer component', () => {
         name: 'Two',
         estimated_diameter: {
           feet: {
-            estimated_diameter_min: 3,
-            estimated_diameter_max: 6
+            estimated_diameter_min: 5,
+            estimated_diameter_max: 10
           }
         }
       }

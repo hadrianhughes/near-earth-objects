@@ -15,7 +15,8 @@ import {
   toFixed,
   changeDateBy,
   compose,
-  formatDate
+  formatDate,
+  makeSort
 } from '../../utils';
 
 interface PropTypes {
@@ -42,15 +43,18 @@ export const ControlsContainer = ({
   const onChangeQuery = (e: ChangeEvent<HTMLInputElement>): void =>
     setQuery(e.target.value);
 
-  const formattedResults = results.map(r => ({
-    name: r.name,
-    id: r.id,
-    diameter: (() => {
-      const sizes = get(['estimated_diameter', sizeUnit])(r);
-      const average = calculateAverageDiameter(sizes.estimated_diameter_min, sizes.estimated_diameter_max);
-      return toFixed(2)(average);
-    })()
-  }));
+  const formattedResults =
+    results
+      .map(r => ({
+        name: r.name,
+        id: r.id,
+        diameter: (() => {
+          const sizes = get(['estimated_diameter', sizeUnit])(r);
+          const average = calculateAverageDiameter(sizes.estimated_diameter_min, sizes.estimated_diameter_max);
+          return toFixed(2)(average);
+        })()
+      }))
+      .sort(makeSort(get('diameter')));
 
   const maxDate: string = compose(formatDate, changeDateBy(-7))(new Date());
 

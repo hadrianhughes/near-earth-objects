@@ -75,3 +75,12 @@ export const toFixed = (n: number) => (x: number): number => {
   const pow = Math.pow(10, n);
   return Math.round(x * pow) / pow;
 };
+
+export const makeSort = (getFn: (any) => any) => (a: any, b: any): number => {
+  const valueA = getFn(a);
+  const valueB = getFn(b);
+
+  if (valueA < valueB) return -1;
+  if (valueA > valueB) return 1;
+  return 0;
+};

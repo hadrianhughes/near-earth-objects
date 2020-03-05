@@ -1,4 +1,4 @@
-import { debounce, select, put } from 'redux-saga/effects';
+import { debounce, takeEvery, select, put } from 'redux-saga/effects';
 import { apiSearchByDate } from '../api';
 import {
   get,
@@ -23,5 +23,6 @@ function* performSearch () {
 }
 
 export default function* searchByDate () {
+  yield takeEvery('INITIALIZE', performSearch);
   yield debounce(1000, 'SET_DATE', performSearch);
 }

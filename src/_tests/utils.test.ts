@@ -8,7 +8,8 @@ import {
   changeDateBy,
   compose,
   responseToResults,
-  toFixed
+  toFixed,
+  makeSort
 } from '../utils';
 import { SizeUnit } from '../types';
 
@@ -285,5 +286,49 @@ describe('toFixed function', () => {
     expect(toFixed(1)(testValue)).toBe(5.1);
     expect(toFixed(2)(testValue)).toBe(5.12);
     expect(toFixed(3)(testValue)).toBe(5.123);
+  });
+});
+
+
+describe('makeSort function', () => {
+  it('Should accept a function and return a function', () => {
+    expect(typeof makeSort(() => {})).toBe('function');
+  });
+
+  it('Should accept a function and two values, run the getter on both values and return an integer from -1 to 1 indicating which value is bigger', () => {
+    const identity = x => x;
+    const sortIdentity = makeSort(identity);
+
+    expect(sortIdentity(1, 2)).toBe(-1);
+    expect(sortIdentity(1, 1)).toBe(0);
+    expect(sortIdentity(2, 1)).toBe(1);
+
+    const getFoo = x => x.foo;
+    const sortFoo = makeSort(getFoo);
+
+    expect(sortFoo({ foo: 1 }, { foo: 1 })).toBe(0);
+  });
+
+  it('Should return the array in ascending order when used with Array.prototype.sort', () => {
+    const testSet = [
+      { foo: 5 },
+      { foo: 3 },
+      { foo: 1 },
+      { foo: 4 },
+      { foo: 2 }
+    ];
+
+    const expectedOutput = [
+      { foo: 1 },
+      { foo: 2 },
+      { foo: 3 },
+      { foo: 4 },
+      { foo: 5 }
+    ];
+
+    const getFoo = x => x.foo;
+    const sortFoo = makeSort(getFoo);
+
+    expect(testSet.sort(sortFoo)).toStrictEqual(expectedOutput);
   });
 });

@@ -5,6 +5,10 @@ export interface Action {
   payload?: any;
 }
 
+export const initialize = (): Action => ({
+  type: 'INITIALIZE'
+});
+
 export const setQuery = (value: string): Action => ({
   type: 'SET_QUERY',
   payload: value
