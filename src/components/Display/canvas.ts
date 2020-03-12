@@ -1,5 +1,5 @@
 const AU = 400;
-const SUN_SIZE = AU * 0.0093;
+const SUN_RADIUS = AU * 0.005;
 
 export const render = (
   canvas: HTMLCanvasElement,
@@ -13,7 +13,7 @@ export const render = (
 
   // Draw sun
   ctx.fillStyle = 'yellow';
-  ctx.arc(canvas.width / 2, canvas.height / 2, SUN_SIZE, 0, 2 * Math.PI);
+  ctx.arc(canvas.width / 2, canvas.height / 2, SUN_RADIUS, 0, 2 * Math.PI);
   ctx.fill();
 
   // Draw Earth orbit
